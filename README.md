@@ -20,17 +20,28 @@ Làm giống giao diện https://bds123.vn/
 + Filter: Loại dịch vụ / Loại bài viết (thuê/tìm người ở ghep)
 
 + Bài viết -> thuê 
-+ 
++ Bài viết -> Duyệt -> Từ chối (note)
 
-### User profile
-https://bds123.vn/dashboard/update-profile.html
-
-
-Hiển thị: (Home)
 ### Người tim kiếm:
 + Bài viết còn hạn
 + Chưa có người thuê
 => 
+
+
+
+### Phân quyền
+- Group
+- Người dùng đặc biệt
+- Chức năng
+
+
+ 
+
+### User profile
+https://bds123.vn/dashboard/update-profile.html
+
+ 
+Hiển thị: (Home)
 
 ###
 + 
