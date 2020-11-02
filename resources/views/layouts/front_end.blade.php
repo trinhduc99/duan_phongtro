@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @yield('title_fe')
+    <title>@yield('title_fe')</title>
+
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
@@ -26,41 +27,14 @@
 
 <body>
 {{--@include('partials_fe.preloader')--}}
-
-<!-- Humberger Begin -->
+{{--fixed--}}
 @include('partials_fe.humberger_menu')
-<!-- Humberger End -->
-
-<!-- Header Section Begin -->
 @include('partials_fe.header')
-<!-- Header Section End -->
-<!-- Hero Section Begin -->
-@include('partials_fe.hero')
-<!-- Hero Section End -->
 
-<!-- Categories Section Begin -->
-{{--@include('partials_fe.categories')--}}
-<!-- Categories Section End -->
+{{--changed--}}
+@yield('contents_fe')
 
-<!-- Featured Section Begin -->
-{{--@include('partials_fe.featured')--}}
-<!-- Featured Section End -->
 
-<!-- Banner Begin -->
-{{--@include('partials_fe.banner')--}}
-<!-- Banner End -->
-
-<!-- Latest Product Section Begin -->
-{{--@include('partials_fe.late_product')--}}
-<!-- Latest Product Section End -->
-
-<!-- Blog Section Begin -->
-
-<!-- Blog Section End -->
-
-<!-- Footer Section Begin -->
-@include('partials_fe.footer')
-<!-- Footer Section End -->
 
 <!-- Js Plugins -->
 <script src="{{asset('front_end/js/jquery-3.3.1.min.js')}}"></script>

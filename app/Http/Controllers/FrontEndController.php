@@ -11,7 +11,7 @@ class FrontEndController extends Controller
     {
         $categories = DB::table("categories")->get();
         $provinces = DB::table("provinces")->get(["name","id"]);
-        return view('layouts.front_end', compact('categories', 'provinces'));
+        return view('front_end.index', compact('categories', 'provinces'));
     }
 
     public function getDistrict($id)
@@ -24,5 +24,7 @@ class FrontEndController extends Controller
         $wards = DB::table('wards')->where('district_id',$id)->get(['name','id']);
         return response()->json($wards);
     }
+
+
 
 }

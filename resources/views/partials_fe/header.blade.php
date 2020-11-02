@@ -1,7 +1,7 @@
 <header class="header">
     <div class="header__top">
         <div class="container">
-            <div class="row pt-2 pb-1">
+            <div class="row">
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__left">
                         <ul>
@@ -23,8 +23,8 @@
                                 Tài khoản
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Quản lý tài khoản</a>
-                                <a class="dropdown-item" href="#">Quản lý bài đăng</a>
+                                <a class="dropdown-item" href="{{route('profile.index')}}">Quản lý tài khoản</a>
+                                <a class="dropdown-item" href="{{route('profile.index')}}">Quản lý bài đăng</a>
                                 <a class="dropdown-item" href="#">Tin đã xem</a>
                                 <a class="dropdown-item" href="#">Tin đã lưu</a>
                                 <a class="dropdown-item" href="#">Đổi mật khẩu</a>
@@ -37,7 +37,7 @@
                             <a class="header__log btn btn-light p-2 ml-1" href="#"><i class="fa fa-user "></i> Đăng ký</a>
                         </div>
                         <div class="header__top__right__auth ">
-                            <a href="#" class="btn btn-danger p-2 ml-1" ><i class="fa fa-user"></i> Đăng tin mới</a>
+                            <a href="{{route('profile.create')}}" class="btn btn-danger p-2 ml-1" ><i class="fa"></i> Đăng tin miễn phí</a>
                         </div>
                     </div>
                 </div>

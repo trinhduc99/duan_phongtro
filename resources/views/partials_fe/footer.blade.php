@@ -7,7 +7,7 @@
                         <a href=""><img src="front_end/img/logo.png" alt=""></a>
                     </div>
                     <ul>
-                        <li>Address: 144 Xuân Thủy Cầu Giấy Hà Nội</li>
+                        <li>Address: Bang text jat my</li>
                         <li>Phone: 0988746131</li>
                         <li>Email: timnhatro@gmail.com</li>
                     </ul>
