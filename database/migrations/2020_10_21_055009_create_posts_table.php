@@ -33,9 +33,11 @@ class CreatePostsTable extends Migration
             $table->string('water_calculate_method')->nullable(false)->comment('Personal - m3 - Negotiate __ thương lượng');
             $table->string('close_time')->comment('Thời gian đóng cửa');
             $table->string('deposit')->comment('Đặt cọc');
+            $table->string('item')->nullable(true)->comment('Các tiện ích của phòng');
+            $table->text('note')->nullable(true);
             $table->boolean('is_public');
             $table->boolean('is_booked')->default(0);
-            $table->boolean('is_delete')->default(0);
+            $table->boolean('is_deleted')->default(0);
             $table->boolean('in_duration')->comment('Còn hạn hay không')->default(1);
             $table->string('status')->comment('Trạng thái bài biết __ Approved - Pending - Denied');
             $table->unsignedBigInteger('creator_id');
