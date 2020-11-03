@@ -8,5 +8,11 @@ Route::prefix('admin')->group(function () {
             'uses' => 'CategoryController@index',
         ]);
     });
+    Route::prefix('post')->group(function () {
+        Route::get('search', 'PostController@searchPost');
+        Route::resource('/post', 'PostController');
+    });
+
+
 });
 
