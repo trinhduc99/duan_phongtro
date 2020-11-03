@@ -17,9 +17,9 @@ class Post extends Model
     ];
 
     public static $USER_TYPE = [
-      'male' => 'Male',
-      'female' => 'Female',
-      'none' => 'None'
+        'male' => 'Male',
+        'female' => 'Female',
+        'none' => 'None'
     ];
     public function scopeSearchPost ($query, $arrSearch)
     {
