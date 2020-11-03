@@ -4,6 +4,14 @@
 <p>php artisan migrate</p>
 <p>php artisan vietnamzone:download</p>
 
++ composer require laravel/ui:^2.4
++ php artisan ui vue --auth
++ npm install && npm run dev
++ composer require laravel/passport:7.4.x
++ php artisan migrate
++ php artisan passport:install
+
+
 
 ### Màn hình 
 
