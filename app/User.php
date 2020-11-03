@@ -5,13 +5,14 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Passport\HasApiTokens;
 
 
 class User extends Authenticatable
 {
     public static $GROUP_ID = [
-        'admin' => 1, 'user' => '2'
+        'admin' => 1, 'user' => 2
     ];
     use Notifiable, HasApiTokens;
 
@@ -32,7 +33,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
     /**
      * The attributes that should be cast to native types.
      *
@@ -41,4 +41,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function scopeIsAdminGroup ()
+    {
+        return Auth::user()->group_id;
+
+    }
+//
+//    public function
 }

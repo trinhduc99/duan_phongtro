@@ -48,7 +48,7 @@ class UserController extends Controller
         }
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
-        $input['group_id'] = User::$GROUP_ID['user'];
+        $input['group_id'] = ($request['admin'] == User::$GROUP_ID['admin']) ?: User::$GROUP_ID['user'];
         $user = User::create($input);
         $success['token'] =  $user->createToken('MyApp')-> accessToken;
         $success['name'] =  $user->name;
@@ -72,5 +72,10 @@ class UserController extends Controller
         auth()->logout();
         // redirect to homepage
         return redirect('/');
+    }
+
+    public function test (Request $request) {
+        $success = 'Success';
+        return response()->json(['success'=>$success], $this-> successStatus);
     }
 }
