@@ -35,7 +35,7 @@ $factory->define(Post::class, function (Faker $faker) {
         'deposit' => rand(0, 12),
         'is_public' => rand(0, 1),
         'is_booked' => rand(0, 1),
-        'is_delete' => rand(0, 1),
+        'is_deleted' => rand(0, 1),
         'in_duration' => rand(0, 1),
         'status' => $postStatus[rand(0, 2)],
         'creator_id' => rand(11, 30),

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+
 class GroupUserSeeder extends Seeder
 {
     /**
@@ -15,9 +15,9 @@ class GroupUserSeeder extends Seeder
             ['name' => 'Admin', 'group_name' => 'admin'],
             ['name' => 'User', 'group_name' => 'user']
         ]);
-        DB::table('users')->insert([
-            ['name' => 'Admin', 'group_id' => '1'],
-            ['name' => 'hopdt', 'group_id' => '2']
-        ]);
+//        DB::table('users')->insert([
+//            ['name' => 'Admin', 'group_id' => '1'],
+//            ['name' => 'hopdt', 'group_id' => '2']
+//        ]);
     }
 }
