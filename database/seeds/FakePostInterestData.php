@@ -12,6 +12,7 @@ class FakePostInterestData extends Seeder
      */
     public function run()
     {
-        factory(PostInterest::class, PostInterest::$NUMBER_RECORD_FAKE)->create();
+        $numberRecord = PostInterest::$NUMBER_RECORD_FAKE;
+        factory(PostInterest::class, $numberRecord)->create();
     }
 }
