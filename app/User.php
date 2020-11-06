@@ -7,14 +7,17 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Passport\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
-
+// https://doc.laravue.dev/vi/guide/development/work-with-permission.html#create-permissions
+// https://viblo.asia/p/phan-quyen-don-gian-voi-package-laravel-permission-gGJ59oOjZX2#_3-ung-dung-2
 class User extends Authenticatable
 {
+    use Notifiable, HasApiTokens, HasRoles;
     public static $GROUP_ID = [
         'admin' => 1, 'user' => 2
     ];
-    use Notifiable, HasApiTokens;
+
 
     /**
      * The attributes that are mass assignable.
