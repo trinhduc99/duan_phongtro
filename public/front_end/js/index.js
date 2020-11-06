@@ -43,4 +43,15 @@ $(document).ready(function (){
             })
         }
     })
+
+    $('.click_heart').on('click', function () {
+      let x =0;
+      if(x==0) {
+
+      }
+    })
+
 })
+
+
+

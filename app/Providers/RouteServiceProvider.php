@@ -47,6 +47,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapWebRoutes();
 
         $this->mapWebRoutesBackEndCategory();
+        $this->mapWebRoutesFrontEndProfile();
     }
 
     /**
@@ -68,7 +69,12 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->namespace)
             ->group(base_path('routes/back_end/category.php'));
     }
-
+    protected function mapWebRoutesFrontEndProfile()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/front_end/profile.php'));
+    }
     /**
      * Define the "api" routes for the application.
      *
