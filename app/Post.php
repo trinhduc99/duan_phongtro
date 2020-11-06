@@ -35,6 +35,7 @@ class Post extends Model
         'negotiate' => 'Negotiate'
     ];
 
+    public static $NUMBER_RECORD_FAKE = 200;
     public static $MOTEL_ITEM = [
         // điều hòa, nóng lạnh,
         // vệ sinh khép kín, chung chủ/không chung chủ, bếp : description
