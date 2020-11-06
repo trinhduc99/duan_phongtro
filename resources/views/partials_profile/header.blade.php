@@ -1,43 +1,29 @@
-<header class="header">
-    <div class="logo-container">
-        <a href="{{route('profile.index')}}" class="logo">
-            <img src="{{asset('profile/images/logo.png')}}" height="45" alt="dashboard" />
-        </a>
-        <div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html"
-             data-fire-event="sidebar-left-opened">
-            <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
-        </div>
+<nav class="navbar navbar-expand-md fixed-top flex-md-nowrap p-0" id="mobile_navbar_top">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Nhatro.com</a>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" target="_blank" href="{{url('/')}}">Trang chủ</a>
+            </li>
+            <li class="nav-item d-none d-md-block">
+                <a class="nav-link" target="_blank" href="#">Cho thuê phòng trọ</a>
+            </li>
+            <li class="nav-item d-none d-md-block">
+                <a class="nav-link" target="_blank" href="#">Tìm người ở ghép</a>
+            </li>
+            <li class="nav-item d-none d-md-block">
+                <a class="nav-link" target="_blank" href="#">Hướng dẫn</a>
+            </li>
+            <li class="nav-item d-none d-md-block">
+                <a class="nav-link" target="_blank" href="#">Liên hệ</a>
+            </li>
+            <li class="nav-item d-none d-md-block">
+                <a class="nav-link" target="_blank" href="#">Bảng giá dịch vụ</a>
+            </li>
+        </ul>
     </div>
-    <div class="header-right">
-        <div id="userbox" class="userbox">
-            <a href="#" data-toggle="dropdown">
-                <figure class="profile-picture">
-                    <img src="{{asset('profile/images/!logged-user.jpg')}}" alt="Joseph Doe" class="img-circle"
-                         data-lock-picture="{{asset('profile/images/!logged-user.jpg')}}" />
-                </figure>
-                <div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@JSOFT.com">
-                    <span class="name">John Doe Junior</span>
-                    <span class="role">administrator</span>
-                </div>
-                <i class="fa custom-caret"></i>
-            </a>
-            <div class="dropdown-menu">
-                <ul class="list-unstyled">
-                    <li class="divider"></li>
-                    <li>
-                        <a role="menuitem" tabindex="-1" href="#"><i
-                                class="fa fa-user"></i> My Profile</a>
-                    </li>
-                    <li>
-                        <a role="menuitem" tabindex="-1" href="#" data-lock-screen="true"><i
-                                class="fa fa-lock"></i> Lock Screen</a>
-                    </li>
-                    <li>
-                        <a role="menuitem" tabindex="-1" href="pages-signin.html"><i
-                                class="fa fa-power-off"></i> Logout</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+    <div class="button-item menu js_btn_menu">
+        <img src="{{asset('profile/images/menu-hamburger.svg')}}"  alt="">
+        <span class="text">Danh mục</span>
     </div>
-</header>
+</nav>
