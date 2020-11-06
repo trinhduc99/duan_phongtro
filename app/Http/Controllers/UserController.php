@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
-
 class UserController extends Controller
 {
     public $successStatus = 200;
@@ -74,8 +73,37 @@ class UserController extends Controller
         return redirect('/');
     }
 
-    public function test (Request $request) {
+    public function isAdminGroup ($userId)
+    {
+        $user = User::select('group_id')->where('id', $userId)->get();
+        $user = $user[0]['group_id'];
+        return $user == User::$GROUP_ID['admin'];
+    }
+    public function isUserGroup ($userId)
+    {
+        $user = User::select('group_id')->where('id', $userId)->get();
+        $user = $user[0]['group_id'];
+        return $user == User::$GROUP_ID['user'];
+    }
+
+
+
+    public function hello (Request $request) {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|integer'
+        ]);
+        $data = [];
+        if ($validator->fails()) {
+            $data = ['http_error' => 400, 'error' => true, 'message' => 'Bad request'];
+            $data = json_encode($data);
+            return view('pages.test', ['data' => $data]);
+        }
+        $userId = (int)$request['id'];
+        $data['result'] = $this->isAdminGroup($userId);
         $success = 'Success';
-        return response()->json(['success'=>$success], $this-> successStatus);
+        $data['success'] = $success;
+        $data['status'] = $this->successStatus;
+        $data = json_encode($data);
+        return view('pages.test', ['data' => $data]);
     }
 }

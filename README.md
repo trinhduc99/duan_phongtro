@@ -8,8 +8,10 @@
 + php artisan ui vue --auth
 + npm install && npm run dev
 + composer require laravel/passport:7.4.x
-+ php artisan migrate
 + php artisan passport:install
++ composer require spatie/laravel-permission
++ php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
++ php artisan migrate
 
 
 
