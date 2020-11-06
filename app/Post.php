@@ -34,6 +34,26 @@ class Post extends Model
         'kwh' => 'Kwh',
         'negotiate' => 'Negotiate'
     ];
+
+    public static $MOTEL_ITEM = [
+        // điều hòa, nóng lạnh,
+        // vệ sinh khép kín, chung chủ/không chung chủ, bếp : description
+        ['' => ['', 'Điều hòa']],
+        ['' => ['', 'Bình nóng lạnh']],
+        ['' => ['', 'Ban công']],
+        ['' => ['', 'Tủ lạnh']],
+        ['' => ['', 'Máy giặt']],
+        ['' => ['', 'Giường']],
+        ['' => ['', 'Quạt trần']],
+        ['' => ['', 'Quạt treo tường']],
+        ['' => ['', 'Giường']],
+        ['' => ['', 'Tủ đựng quần áo']],
+        ['' => ['', 'Bàn học']],
+        ['' => ['', 'Ghế']],
+        ['' => ['', 'Bàn học']],
+        ['' => ['', 'Đèn học']],
+
+    ];
     public function scopeSearchPost ($query, $arrSearch)
     {
         for ($i = 0; $i < count($arrSearch); $i++) {
