@@ -22,3 +22,10 @@ Route::prefix('post')->group(function () {
     Route::get('/delete', 'PostController@delete');
     Route::resource('/', 'PostController');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
