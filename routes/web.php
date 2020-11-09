@@ -13,13 +13,21 @@ Route::prefix('/quan-ly')->group(function () {
     Route::prefix('/dang-tin-moi')->group(function () {
         Route::get('/index', 'PostController@index');
     });
+    Route::prefix('/giao-dich')->group(function () {
+        /* this method is post */
+        Route::get('', 'TransactionController@index');
+        Route::get('/thanh-toan', 'TransactionController@create');
+    });
+    Route::prefix('/nap-tien')->group(function () {
+        /* this method is post */
+        Route::get('', 'PayInController@payIn');
+        Route::get('/lich-su', 'PayInController@show');
+    });
 });
 Route::get('/search', 'PostController@searchPost');
 
 Route::get('/temp', 'PostController@temp');
 Route::prefix('post')->group(function () {
-    Route::get('/temp', 'PostController@temp');
-
     Route::prefix('my-post')->group(function () {
         Route::get('', 'PostController@myPost');
 
