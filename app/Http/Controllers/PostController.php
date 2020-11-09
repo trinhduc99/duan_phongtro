@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Categories;
 use App\GroupUser;
+use App\Services;
+use App\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Post;
@@ -14,9 +17,23 @@ class PostController extends Controller
     /*
      *  Get all post
     */
-    public function index ()
+    public function index (Request $request)
     {
-        $data = Post::where('is_deleted', 0)->where('in_duration', 1)->where('is_booked', 0)->limit(10)->orderBy('service_id', 'desc')->get();
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required|bail|integer'
+        ]);
+        $data = [];
+        if ($validator->fails()) {
+            $data = ['http_error' => 400, 'error' => true, 'message' => 'Bad request'];
+            $data = json_encode($data);
+            return view('pages.test', ['data' => $data]);
+        }
+        $data['categories'] = Categories::select('id', 'name', 'slug')->get();
+        $data['phone'] = User::select('phone')->where('id', $request['user_id'])->get();
+        $data['item'] = Post::$MOTEL_ITEM;
+        $data['service'] = Services::select('id', 'name', 'price_day', 'price_week', 'price_month', 'min_day_up', 'description')->get();
+//        $data['phone'] = $request['id'];
+        $data =json_encode($data);
         return view('pages.test', ['data' => $data]);
     }
 

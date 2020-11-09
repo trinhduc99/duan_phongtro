@@ -23,6 +23,12 @@ class Post extends Model
         'none' => 'None'
     ];
 
+    public static $USER_OBJECT = [
+       'none' => 'None',
+       'student' => 'Student',
+       'worker' => 'Worker'
+    ];
+
     public static $WATER_CALCULATE_METHOD = [
        'personal' => 'Personal',
         'm3' => 'm3',
@@ -33,6 +39,12 @@ class Post extends Model
         'personal' => 'Personal',
         'kwh' => 'Kwh',
         'negotiate' => 'Negotiate'
+    ];
+
+    public static $TOILET_TYPE = [
+        'none' => 'None',
+        'private' => 'Private',
+        'public' => 'Public'
     ];
 
     public static $NUMBER_RECORD_FAKE = 200;
