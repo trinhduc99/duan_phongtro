@@ -12,7 +12,7 @@ class FakePostData extends Seeder
      */
     public function run()
     {
-        $numberRecord = 500;
+        $numberRecord = Post::$NUMBER_RECORD_FAKE;
         factory(Post::class, $numberRecord)->create();
     }
 }

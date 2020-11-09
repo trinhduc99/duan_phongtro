@@ -26,7 +26,7 @@ $factory->define(Post::class, function (Faker $faker) {
         'area' => rand(10, 1000),
         'category_id' => rand(1, 2),
         'gender_user' => $genderUser[rand(0, 2)],
-        'user_type' => $userType[rand(0, 2)],
+        'user_object' => $userType[rand(0, 2)],
         'electric_price' => rand(1000, 10000),
         'electric_calculate_method' => $electricCalculateMethod[rand(0, 2)],
         'water_price' => rand(1000, 10000),
