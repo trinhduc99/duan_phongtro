@@ -12,14 +12,16 @@ Route::post('get-wards-by-districts/{id}', 'FrontEndController@getWard');
 Route::prefix('/quan-ly')->group(function () {
     Route::prefix('/dang-tin-moi')->group(function () {
         Route::get('/index', 'PostController@index');
+
+    });
+    Route::prefix('/giao-dich')->group(function () {
+        Route::get('/thanh-toan', 'TransactionController@create');
     });
 });
 Route::get('/search', 'PostController@searchPost');
 
 Route::get('/temp', 'PostController@temp');
 Route::prefix('post')->group(function () {
-    Route::get('/temp', 'PostController@temp');
-
     Route::prefix('my-post')->group(function () {
         Route::get('', 'PostController@myPost');
 
