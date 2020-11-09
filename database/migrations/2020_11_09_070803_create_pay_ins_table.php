@@ -15,6 +15,7 @@ class CreatePayInsTable extends Migration
     {
         Schema::create('pay_in', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('receiver_id')->nullable(false)->comment('Người nhận tiền');
             $table->unsignedBigInteger('depositor_id')->nullable(false)->comment('Người nạp tiền');
             $table->decimal('amount', 15, 3);
             $table->string('status')->nullable(true);

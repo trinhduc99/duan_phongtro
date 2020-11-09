@@ -18,6 +18,11 @@ Route::prefix('/quan-ly')->group(function () {
         Route::get('', 'TransactionController@index');
         Route::get('/thanh-toan', 'TransactionController@create');
     });
+    Route::prefix('/nap-tien')->group(function () {
+        /* this method is post */
+        Route::get('', 'PayInController@payIn');
+        Route::get('/lich-su', 'PayInController@show');
+    });
 });
 Route::get('/search', 'PostController@searchPost');
 
