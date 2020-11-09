@@ -10,9 +10,31 @@ use Illuminate\Http\Request;
 
 class PayInController extends Controller
 {
-    public function index (Request $request)
+    public function show (Request $request)
     {
-
+        $validator = Validator::make($request->all(), [
+            'receiver_id' => 'required|bail|integer',
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'message'=> 'Bad request',
+            ],400);
+        }
+        $userCondition = [
+            'id' => $request['receiver_id'],
+            'group_id' => User::$GROUP_ID['user']
+        ];
+        $checkReceiver = User::where($userCondition)->count();
+        if ($checkReceiver != 1) {
+            return response()->json([
+                'message'=> 'Bad request',
+            ],400);
+        }
+        $payInHistory = PayIn::select('amount', 'status', 'note', 'created_at')->where('receiver_id', $request['receiver_id'])->orderBy('created_at', 'desc')->get();
+        $data = $payInHistory;
+        return response()->json([
+            'message'=> 'Success', $data
+        ],200);
     }
 
     public function payIn (Request $request)
