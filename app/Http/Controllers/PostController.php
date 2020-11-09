@@ -14,6 +14,10 @@ use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
+    public $SUCCESS = [
+        'success' => 'Success',
+        'code' => 200
+    ];
     /*
      *  Get all post
     */
@@ -24,17 +28,17 @@ class PostController extends Controller
         ]);
         $data = [];
         if ($validator->fails()) {
-            $data = ['http_error' => 400, 'error' => true, 'message' => 'Bad request'];
-            $data = json_encode($data);
-            return view('pages.test', ['data' => $data]);
+            return response()->json([
+                'message'=> 'Bad request',
+            ],400);
         }
         $data['categories'] = Categories::select('id', 'name', 'slug')->get();
         $data['phone'] = User::select('phone')->where('id', $request['user_id'])->get();
         $data['item'] = Post::$MOTEL_ITEM;
         $data['service'] = Services::select('id', 'name', 'price_day', 'price_week', 'price_month', 'min_day_up', 'description')->get();
-//        $data['phone'] = $request['id'];
-        $data =json_encode($data);
-        return view('pages.test', ['data' => $data]);
+        return response()->json([
+            'message'=> 'Success', 'data' => $data
+        ],200);
     }
 
     /*
@@ -51,9 +55,9 @@ class PostController extends Controller
         ]);
         $data = [];
         if ($validator->fails()) {
-            $data = ['http_error' => 400, 'error' => true, 'message' => 'Bad request'];
-            $data = json_encode($data);
-            return view('pages.test', ['data' => $data]);
+            return response()->json([
+                'message'=> 'Bad request',
+            ],400);
         }
         $categoryId = $request['category_id'];
         $provinceId = $request['province_id'];
@@ -86,7 +90,9 @@ class PostController extends Controller
 
         ];
         $data = Post::where('is_deleted', 0)->where('in_duration', 1)->SearchPost($arrSearch)->where('is_booked', 0)->limit(10)->orderBy('service_id', 'desc')->get();
-        return view('pages.test', ['data' => $data]);
+        return response()->json([
+            'message'=> 'Success', 'data' => $data
+        ],200);
     }
 
     /*
@@ -115,9 +121,9 @@ class PostController extends Controller
         ]);
         $data = [];
         if ($validator->fails()) {
-            $data = ['http_error' => 400, 'error' => true, 'message' => 'Bad request'];
-            $data = json_encode($data);
-            return view('pages.test', ['data' => $data]);
+            return response()->json([
+                'message'=> 'Bad request',
+            ],400);
         }
         $post = Post::create([
             'category_id' => $request['category_id'],
@@ -149,7 +155,9 @@ class PostController extends Controller
 
         ]);
         $data = $post;
-        return view('pages.test', ['data' => $data]);
+        return response()->json([
+            'message'=> 'Success', 'data' => $data
+        ],200);
     }
 
     /*
@@ -164,9 +172,9 @@ class PostController extends Controller
         ]);
         $data = [];
         if ($validator->fails()) {
-            $data = ['http_error' => 400, 'error' => true, 'message' => 'Bad request'];
-            $data = json_encode($data);
-            return view('pages.test', ['data' => $data]);
+            return response()->json([
+                'message'=> 'Bad request',
+            ],400);
         }
         $conditions = [
             ['creator_id', $request['creator_id']],
@@ -189,8 +197,9 @@ class PostController extends Controller
         $data['posted'] = $posted;
         $data['pending'] = $pending;
         $data['denied'] = $denied;
-        $data = json_encode($data);
-        return view('pages.test', ['data' => $data]);
+        return response()->json([
+            'message'=> 'Success', 'data' => $data
+        ],200);
     }
 
     /*
@@ -223,9 +232,10 @@ class PostController extends Controller
         ]);
         $data = [];
         if ($validator->fails()) {
-            $data = ['http_error' => 400, 'error' => true, 'message' => 'Bad request'];
-            $data = json_encode($data);
-            return view('pages.test', ['data' => $data]);
+            return response()->json([
+                'message'=> 'Bad request',
+            ],400);
+
         }
         $conditions = [
             ['id', $request['id']],
@@ -322,9 +332,10 @@ class PostController extends Controller
 
         ];
         $post = Post::where($conditions)->UpdatePost($arrUpdate);
-        $data['post'] = $post;
-        $data = json_encode($data);
-        return view('pages.test', ['data' => $data]);
+        $data = $post;
+        return response()->json([
+            'message'=> 'Success', 'data' => $data
+        ],200);
     }
 
     /*
@@ -338,9 +349,9 @@ class PostController extends Controller
         ]);
         $data = [];
         if ($validator->fails()) {
-            $data = ['http_error' => 400, 'error' => true, 'message' => 'Bad request'];
-            $data = json_encode($data);
-            return view('pages.test', ['data' => $data]);
+            return response()->json([
+                'message'=> 'Bad request',
+            ],400);
         }
 
         $conditions = [
@@ -350,9 +361,10 @@ class PostController extends Controller
         ];
         $result = Post::where($conditions)->update(['is_deleted' => 1]);
 
-        $data['result'] = $result;
-        $data = json_encode($data);
-        return view('pages.test', ['data' => $data]);
+        $data = $result;
+        return response()->json([
+            'message'=> 'Success', 'data' => $data
+        ],200);
 
     }
 
@@ -369,9 +381,9 @@ class PostController extends Controller
         ]);
         $data = [];
         if ($validator->fails()) {
-            $data = ['http_error' => 400, 'error' => true, 'message' => 'Bad request'];
-            $data = json_encode($data);
-            return view('pages.test', ['data' => $data]);
+            return response()->json([
+                'message'=> 'Bad request',
+            ],400);
         }
         $conditions = [
           [
@@ -380,9 +392,10 @@ class PostController extends Controller
           ]
         ];
         $post = Post::where(['id' => $request['id']])->update($conditions);
-        $data['result'] = $post;
-        $data = json_encode($data);
-        return view('pages.test', ['data' => $data]);
+        $data = $post;
+        return response()->json([
+            'message'=> 'Success', 'data' => $data
+        ],200);
     }
 
     public function temp ()
