@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
              CategoriesSeeder::class,
              ServiceSeeder::class,
              FakePostData::class,
+//             FakePostInterestData::class,
+//             FakePostRecentData::class,
 //             FakeUserSeeder::class,
          ]);
     }

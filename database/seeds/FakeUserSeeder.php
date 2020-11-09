@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Post;
+use App\User;
 
-class FakePostData extends Seeder
+class FakeUserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +12,7 @@ class FakePostData extends Seeder
      */
     public function run()
     {
-        $numberRecord = Post::$NUMBER_RECORD_FAKE;
-        factory(Post::class, $numberRecord)->create();
+        $numberRecord = User::$NUMBER_RECORD_FAKE;
+        factory(User::class, $numberRecord)->create();
     }
 }

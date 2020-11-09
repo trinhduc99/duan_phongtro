@@ -9,9 +9,17 @@ Route::get('/admin', function () {
 Route::get('/', 'FrontEndController@index');
 Route::post('get-districts-by-provinces/{id}', 'FrontEndController@getDistrict');
 Route::post('get-wards-by-districts/{id}', 'FrontEndController@getWard');
+Route::prefix('/quan-ly')->group(function () {
+    Route::prefix('/dang-tin-moi')->group(function () {
+        Route::get('/index', 'PostController@index');
+    });
+});
+Route::get('/search', 'PostController@searchPost');
+
+Route::get('/temp', 'PostController@temp');
 Route::prefix('post')->group(function () {
     Route::get('/temp', 'PostController@temp');
-    Route::get('/search', 'PostController@searchPost');
+
     Route::prefix('my-post')->group(function () {
         Route::get('', 'PostController@myPost');
 

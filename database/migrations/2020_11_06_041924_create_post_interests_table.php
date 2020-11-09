@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostLikeTable extends Migration
+class CreatePostInterestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreatePostLikeTable extends Migration
      */
     public function up()
     {
-        Schema::create('post_like', function (Blueprint $table) {
+        Schema::create('post_interest', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('post_id')->nullable(false);
-            $table->unsignedBigInteger('creator_id')->nullable(false);
-            $table->unsignedInteger('quantity')->nullable(false)->default(0)->comment('Số lượng yêu thích bài viết');
+            $table->unsignedBigInteger('user_id')->nullable(false);
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreatePostLikeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_like');
+        Schema::dropIfExists('post_interest');
     }
 }

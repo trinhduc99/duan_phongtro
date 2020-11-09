@@ -18,7 +18,7 @@ class User extends Authenticatable
         'admin' => 1, 'user' => 2
     ];
 
-
+    public static $NUMBER_RECORD_FAKE = 20;
     /**
      * The attributes that are mass assignable.
      *

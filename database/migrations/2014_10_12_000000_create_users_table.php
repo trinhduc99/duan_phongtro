@@ -20,7 +20,6 @@ class CreateUsersTable extends Migration
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
             $table->string('url_avatar')->nullable();
-            $table->string('introduce')->nullable()->comment('Giới thiệu');
             $table->unsignedSmallInteger('group_id')->nullable(false);
             $table->string('gender')->nullable();
             $table->string('spec_permission')->nullable()->comment('Quyền đặc biệt');

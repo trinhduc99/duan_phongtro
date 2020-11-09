@@ -26,11 +26,12 @@ class CreatePostsTable extends Migration
             $table->decimal('price', 15, 3);
             $table->double('area', 10, 2)->nullable(false);
             $table->string('gender_user')->nullable(false)->comment('Male - Female - None');
-            $table->string('user_type')->nullable(false)->comment('Student - Household - Worker');
+            $table->string('user_object')->nullable(false)->comment('Student - Household - Worker');
             $table->decimal('electric_price', 10, 3)->nullable(false);
             $table->string('electric_calculate_method')->nullable(false)->comment('Personal - Kwh - Negotiate __ thương lượng');
             $table->decimal('water_price', 10, 3)->nullable(false);
             $table->string('water_calculate_method')->nullable(false)->comment('Personal - m3 - Negotiate __ thương lượng');
+            $table->string('toilet_type')->nullable(true);
             $table->string('close_time')->comment('Thời gian đóng cửa');
             $table->string('deposit')->comment('Đặt cọc');
             $table->string('item')->nullable(true)->comment('Các tiện ích của phòng');
