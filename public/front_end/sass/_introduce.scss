@@ -1,0 +1,120 @@
+.introduce {
+    .introduce_tc {
+        margin-left: 1rem;
+        margin-bottom: 2rem;
+
+        .introduce__tc--title {
+
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .introduce__tc--content {
+            font-size: 0.9rem;
+        }
+    }
+
+    .introduce__project {
+        width: 100%;
+        height: 250px;
+
+        .introduce__project--title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .introduce__project--location {
+            display: flex;
+            margin-left: 15%;
+            margin-right: 15%;
+
+            .location_image {
+                position: relative;
+                text-align: center;
+                color: white;
+                height: 150px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+                    border-radius: 10px;
+                }
+
+                a {
+                    color: white;
+                    font-size: 1.5rem;
+                    font-weight: bolder;
+                }
+
+                a:hover {
+                    color: #9cc9d0;
+                }
+
+                span {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+
+        }
+
+    }
+}
+
+.new_vip {
+    .container {
+        padding: 10px;
+        span {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-left: 10px;
+        }
+
+        a {
+            font-size: 1.2rem;
+            float: none;
+            margin: 10px;
+        }
+
+        a:hover {
+            color: -webkit-link;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+}
+
+.img-hover-zoom {
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    .img-fluid {
+        transition: transform 2s, filter 1.5s ease-in-out;
+        transform-origin: center center;
+        filter: brightness(50%);
+    }
+
+    &:hover .img-fluid {
+        filter: brightness(100%);
+        transform: scale(1.3);
+    }
+
+    .click_heart {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        color: #1e3179;
+        border: 10px solid #ebebeb;
+        background: #ffffff;
+        border-radius: 50%;
+    }
+    .img-hover-zoom:hover .click_heart{
+    }
+    .saved{
+        color: #f67e7e;
+    }
+}

@@ -1,0 +1,31 @@
+.user_verify {
+    color: #555;
+    font-size: 0.9rem;
+}
+
+ul li span {
+    font-weight: 700;
+}
+
+.user_quick_info p1 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.user_quick_info p2 {
+    margin-bottom: 0;
+}
+
+.card-title.payment {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+label.col-md-12.col-form-label.left {
+    left: -14px;
+}
+input#giachothue {
+    left: -14px;
+}

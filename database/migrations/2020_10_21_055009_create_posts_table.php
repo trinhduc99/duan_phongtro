@@ -34,12 +34,12 @@ class CreatePostsTable extends Migration
             $table->string('close_time')->comment('Thời gian đóng cửa');
             $table->string('deposit')->comment('Đặt cọc');
             $table->string('item')->nullable(true)->comment('Các tiện ích của phòng');
-            $table->text('note')->nullable(true);
-            $table->boolean('is_public');
+            $table->text('note')->nullable(true)->comment("Ghi chú cho bài viết");
+            $table->boolean('is_public')->comment("Người tìm kiếm có thể thấy");
             $table->boolean('is_booked')->default(0);
             $table->boolean('is_deleted')->default(0);
             $table->boolean('in_duration')->comment('Còn hạn hay không')->default(1);
-            $table->string('status')->comment('Trạng thái bài biết __ Approved - Pending - Denied');
+            $table->string('status')->comment('Trạng thái bài biết __ Approved - Pending - Denied - Violate');
             $table->unsignedBigInteger('creator_id');
             $table->unsignedBigInteger('processor_id')->comment('Người xử lý');
             $table->dateTime('start_date')->nullable(false);
@@ -49,6 +49,7 @@ class CreatePostsTable extends Migration
             $table->unsignedInteger('number_day_up')->nullable(true);
             $table->unsignedInteger('visited')->nullable(false)->default(0)->comment('Số lượt xem bài viết');
             $table->string('slug')->comment('Slug của post');
+            $table->decimal('post_price', 15, 3)->nullable(false)->default(0);
             $table->timestamps();
         });
     }
