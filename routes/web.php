@@ -12,9 +12,10 @@ Route::post('get-wards-by-districts/{id}', 'FrontEndController@getWard');
 Route::prefix('/quan-ly')->group(function () {
     Route::prefix('/dang-tin-moi')->group(function () {
         Route::get('/index', 'PostController@index');
-
     });
     Route::prefix('/giao-dich')->group(function () {
+        /* this method is post */
+        Route::get('', 'TransactionController@index');
         Route::get('/thanh-toan', 'TransactionController@create');
     });
 });
