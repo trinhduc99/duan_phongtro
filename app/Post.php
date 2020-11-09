@@ -17,7 +17,7 @@ class Post extends Model
         'violate' => 'Violate'
     ];
 
-    public static $USER_TYPE = [
+    public static $USER_GENDER = [
         'male' => 'Male',
         'female' => 'Female',
         'none' => 'None'

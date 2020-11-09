@@ -90,7 +90,7 @@ class PostController extends Controller
             'price' => 'required|bail|numeric',
             'area' => 'required|bail|numeric',
             'gender_user' => ['required', 'bail', Rule::in(Post::$POST_STATUS)],
-            'user_type' => ['required', 'bail', Rule::in(Post::$USER_TYPE)],
+            'user_type' => ['required', 'bail', Rule::in(Post::$USER_GENDER)],
             'electric_price' => 'required|bail|numeric',
             'electric_calculate_method' => ['required', 'bail', Rule::in(Post::$ELECTRIC_CALCULATE_METHOD)],
             'water_price' => 'required|bail|numeric',
@@ -195,7 +195,7 @@ class PostController extends Controller
             'price' => 'nullable|bail|numeric',
             'area' => 'nullable|bail|numeric',
             'gender_user' => ['nullable', 'bail', Rule::in(Post::$POST_STATUS)],
-            'user_type' => ['nullable', 'bail', Rule::in(Post::$USER_TYPE)],
+            'user_type' => ['nullable', 'bail', Rule::in(Post::$USER_GENDER)],
             'electric_price' => 'nullable|bail|numeric',
             'electric_calculate_method' => ['nullable', 'bail', Rule::in(Post::$ELECTRIC_CALCULATE_METHOD)],
             'water_price' => 'nullable|bail|numeric',
@@ -368,6 +368,11 @@ class PostController extends Controller
         return view('pages.test', ['data' => $data]);
     }
 
-
+    public function temp ()
+    {
+        $data= Post::$USER_GENDER;
+        $data = json_encode($data);
+        return view('pages.test', ['data' => $data]);
+    }
 
 }
