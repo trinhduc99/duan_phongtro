@@ -40,7 +40,6 @@
     @include('partials_profile.bottom_bar')
 </div>
 @include('partials_profile.mobile_panel')
-
 <script src="{{asset('profile/js/main-dashboard.min.js')}}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6Coia3ssHYuRKJ2nDysWBdSlVlBCzKAw"></script>
 <script src="{{asset('profile/js/google_map.js')}}"></script>

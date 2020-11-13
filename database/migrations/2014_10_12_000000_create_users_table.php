@@ -16,17 +16,16 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique()->nullable();
-            $table->string('address')->nullable();
-            $table->string('phone')->nullable();
-            $table->string('url_avatar')->nullable();
-            $table->unsignedSmallInteger('group_id')->nullable(false);
-            $table->decimal('amount', 18, 2)->nullable(false)->default(0);
-            $table->string('gender')->nullable();
-            $table->string('spec_permission')->nullable()->comment('Quyền đặc biệt');
+            $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->nullable();
-            $table->rememberToken()->nullable();
+            $table->integer('phone')->comment('so dien thoai');
+            $table->string('gender')->comment('gioi tinh')->nullable();
+            $table->decimal('amount',18,2)->nullable()->default(0)->comment('So tien trong tai khoan');
+            $table->string('avatar_path')->nullable()->comment('duong dan image');
+            $table->string('avatar_name')->nullable()->comment('ten image');
+            $table->string('password');
+            $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

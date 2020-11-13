@@ -7,7 +7,8 @@
 
 @endsection
 @section('js_profile')
-
+    <script src="{{asset('profile/js/ckeditor.js')}}"></script>
+    <script src="{{asset('profile/js/profile.js')}}"></script>
 @endsection
 @section('title_profile')
     Đăng tin mới
@@ -26,19 +27,21 @@
                 <div class="row mt-3">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label for="province_id" class="col-form-label">Tỉnh/Thành phố</label>
-                            <select id="province_id" name="province_id"
+                            <label for="province" class="col-form-label ">Tỉnh/Thành phố</label>
+                            <select id="province" name="province"
                                     class="form-control js-select-tinhthanhpho" required
                                     data-msg-required="Chưa chọn Tỉnh/TP">
                                 <option value="">-- Chọn Tỉnh/TP --</option>
-                                <option value="96">Đồng Tháp</option>
+                                @foreach($provinces as $province)
+                                    <option value="{{$province->id}}">{{$province->_name}}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label class="col-form-label" for="district_id">Quận/Huyện</label>
-                            <select name="district_id" id="district_id"
+                            <label class="col-form-label" for="district">Quận/Huyện</label>
+                            <select name="district" id="district"
                                     class="form-control js-select-quanhuyen" required
                                     data-msg-required="Chưa chọn Quận/Huyện">
                                 <option value="">chọn quận huyện</option>
@@ -48,7 +51,7 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label class="col-form-label" for="phuongxa">Phường/Xã</label>
-                            <select class="form-control js-select-phuongxa" name="phuongxa" id="phuongxa">
+                            <select class="form-control js-select-phuongxa" name="ward" id="ward">
                                 <option value="">chọn phường xã</option>
                             </select>
                         </div>
@@ -56,8 +59,8 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label class="col-form-label" for="duong">Đường/Phố</label>
-                            <select class="form-control js-select-duong" name="duong" id="duong">
-                                <option value="">chọn đường phố</option>
+                            <select class="form-control js-select-duong" name="street" id="street">
+                                <option value="">Chọn đường phố</option>
                             </select>
                         </div>
                     </div>
@@ -88,11 +91,12 @@
                 <div class="form-group row mt-3">
                     <label for="post_cat" class="col-md-12 col-form-label">Loại chuyên mục</label>
                     <div class="col-md-6">
-                        <select class="form-control" id="post_cat" name="loai_chuyen_muc" required
+                        <select class="form-control" id="category" name="loai_chuyen_muc" required
                                 data-msg-required="Chưa chọn loại chuyên mục">
                             <option value="">-- Chọn loại tin --</option>
-                            <option value="1">Phòng trọ, nhà trọ</option>
-                            <option value="2">Tìm người ở ghép</option>
+                            @foreach($categories as  $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -117,10 +121,12 @@
                     <label for="phone" class="col-md-12 col-form-label">Thông tin liên hệ</label>
                     <div class="col-md-6">
                         <div class="input-group mb-3">
-
-                            <input id="phone" type="number" name="phone" class="form-control"
+                            @php
+                            $user = \Illuminate\Support\Facades\Auth::user()
+                            @endphp
+                            <input id="phone" type="text" name="phone" class="form-control"
                                    required data-msg-required="Số điện thoại"
-                                   value="0988746131">
+                                   value="{{$user->phone}}">
                         </div>
                     </div>
                 </div>
@@ -176,6 +182,81 @@
                             </label>
                         </div>
                     </div>
+                    <div class="form-group row mt-3">
+                        <label for="post_cat" class="col-md-12 col-form-label">Giờ đóng cửa</label>
+                        <div class="col-md-6">
+                            <select class="form-control" id="acc_time_close" name="acc_time_close" required
+                                    data-msg-required="Chưa chọn loại chuyên mục">
+                                <option value="">-- Không quy định --</option>
+                                <option value=""> Sau 22h30 </option>
+                                <option value=""> Sau 23h </option>
+                                <option value=""> Sau 23h30 </option>
+                                <option value=""> Sau 24h </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                        <label for="post_acreage" class="col-md-12 col-form-label mb-3">Giá điện</label>
+                            <div class="input-group mb-3">
+                                <input id="acc_price_water" type="number" pattern="[0-9.]+" name="dien_tich"
+                                       max="1000" class="form-control" required
+                                       data-msg-required="Bạn chưa nhập giá điện ">
+                                <div class="input-group-append">
+                                    <select class="form-control" id="acc_time_close" name="acc_time_close" required
+                                            data-msg-required="Chưa chọn loại chuyên mục">
+                                        <option value="">đồng/Kwh/tháng</option>
+                                        <option value="">đồng//tháng</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="post_acreage" class="col-md-12 col-form-label mb-3">Giá nước</label>
+                            <div class="input-group mb-4">
+                                <input id="post_acreage" type="text" pattern="[0-9.]+" name="dien_tich"
+                                       max="1000" class="form-control" required
+                                       data-msg-required="Bạn chưa nhập g">
+                                <div class="input-group-append">
+                                    <select class="form-control" id="acc_time_close" name="acc_time_close" required
+                                            data-msg-required="Chưa chọn loại chuyên mục">
+                                        <option value="">đồng/người/tháng</option>
+                                        <option value="">đồng/m<sup>3</sup>/tháng</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="giachothue" class="col-md-12 col-form-label">Giá internet</label>
+                        <div class="col-md-12">
+                            <div class="input-group col-md-6">
+                                <input id="giachothue" name="gia" pattern="[0-9.]+" type="text"
+                                       class="form-control" required data-msg-required="Bạn chưa nhập giá phòng"
+                                       data-msg-min="Giá phòng chưa đúng">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">đồng</span>
+                                </div>
+                            </div>
+                            <small class="form-text text-muted">Nhập đầy đủ số, ví dụ 1 triệu thì nhập là
+                                1000000</small>
+                        </div>
+                        <label for="text_giachothue" id="text_giachothue"
+                               class="col-sm-12 control-label js-number-text" style="color: red;"></label>
+                    </div>
+                    <div class="form-group row mt-3">
+                        <label for="post_cat" class="col-md-12 col-form-label">Yêu cầu đặt cọc</label>
+                        <div class="col-md-6">
+                            <select class="form-control" id="acc_time_close" name="acc_time_close" required
+                                    data-msg-required="Chưa chọn loại chuyên mục">
+                                <option value="">Đặt cọc 1 tháng</option>
+                                <option value="">Đặt cọc 2 tháng</option>
+                                <option value="">Đặt cọc 3 tháng</option>
+                                <option value="">Đặt cọc 4 tháng</option>
+                                <option value="">Đặt cọc 5 tháng</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <div class="col-md-12 col-sm-12">
                             <div class="form-group checkbox_group">
@@ -219,6 +300,11 @@
                                 </div>
                             </div>
                         </div>
+
+
+
+
+
                         <div class="col-md-12 col-sm-12">
                             <div class="form-group checkbox_group">
                                 <label class="col-md-12 col-form-label left mb-2" for="">Lợi thế phòng trọ, nhà trọ của bạn</label>

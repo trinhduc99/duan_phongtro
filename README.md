@@ -20,25 +20,39 @@ Chung:
 Post: Truowng dai hoc
 Service Type
 Day - Week - Month
-Loại hình cho thuê: (chung cư min, Văn phòng, ) => đăng bai
+
 
 Frontend 
-Post: 
+####Post:
+ 
 - Nội dung mô tả cho xuống cuối cùng trước đăng anh
 - Thông tin liên hệ (Mục to)
--  
++ Chung chủ hay không (Radio box) 
 
 
-Làm giống giao diện https://bds123.vn/
-+ Bổ sung thêm select tiện ích (tủ lạnh, điều hòa, ...)
-+ Hình thức đăng tin: https://phongtro123.com/quan-ly/dang-tin-moi.html
-+ Bảng giá tham khảo: https://phongtro123.com/quan-ly/dang-tin-moi.html
+
++ Chung chủ hay không (Radio box): Muc riêng
++ Đổi tên: 
+    - Lợi thế ... => Cơ sở vật chất
+    - Phòng Gym => Gần Phòng GYM  
++ Bỏ - Cơ sở vật chất  : 
+    - Không chung chủ 
+    - Internet  
+    - Có truyền hình cáp 
+
++ Sửa :
+    - Loại hình cho thuê: (chung cư min, Văn phòng, ) => đăng bai
+    - Bảng giá: đưa lên trước thanh toán   
++ Thêm :
+    - Ngày muốn đăng tin, hạn (chỗ đăng tin )
+    - Bắt đầu từ ngày nào (defaul hôm nay)
+
+
+=> Backend: validate đăng tin miễn phí: 
 
 ### Quản Lý bài tin:
 
 Post => [service_type, service_type] 
-
-
 
 + Bài viết -> thuê 
 + Bài viết -> Duyệt -> Từ chối (note)
@@ -49,6 +63,9 @@ Post => [service_type, service_type]
 => 
 
 
++ Bổ sung thêm select tiện ích (tủ lạnh, điều hòa, ...)
++ Hình thức đăng tin: https://phongtro123.com/quan-ly/dang-tin-moi.html
++ Bảng giá tham khảo: https://phongtro123.com/quan-ly/dang-tin-moi.html
 
 ### Phân quyền
 - Group

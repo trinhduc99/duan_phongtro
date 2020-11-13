@@ -13,13 +13,16 @@
                 </div>
                 <div class="col-lg-6 col-md-6 ">
 
-                        <div class="dropdown float-right">
-                            <div class="header__cart">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                                </ul>
-                            </div>
-                            <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="dropdown float-right">
+                        <div class="header__cart">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                            </ul>
+                        </div>
+                        @if (Route::has('login'))
+                            @auth
+                            <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Tài khoản
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -28,17 +31,30 @@
                                 <a class="dropdown-item" href="#">Tin đã xem</a>
                                 <a class="dropdown-item" href="#">Tin đã lưu</a>
                                 <a class="dropdown-item" href="#">Đổi mật khẩu</a>
-                                <a class="dropdown-item" href="#">Đăng xuất</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    Đăng xuất
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                             </div>
-                        <div class="header__top__right__auth">
-                            <a class="header__log p-2 btn btn-light ml-1"><i class="fa fa-user "></i> Đăng nhập</a>
-                        </div>
-                        <div class="header__top__right__auth">
-                            <a class="header__log btn btn-light p-2 ml-1" href="#"><i class="fa fa-user "></i> Đăng ký</a>
-                        </div>
-                        <div class="header__top__right__auth ">
-                            <a href="{{route('profile.create')}}" class="btn btn-danger p-2 ml-1" ><i class="fa"></i> Đăng tin miễn phí</a>
-                        </div>
+                            <div class="header__top__right__auth ">
+                                <a href="{{route('profile.create')}}" class="btn btn-danger p-2 ml-1"><i class="fa"></i>
+                                    Đăng tin miễn phí</a>
+                            </div>
+                            @else
+                            <div class="header__top__right__auth">
+                                <a href="{{ route('login') }}" class="header__log p-2 btn btn-light ml-1"><i class="fa fa-user "></i> Đăng nhập</a>
+                            </div>
+                            <div class="header__top__right__auth">
+                                <a href="{{ route('register') }}" class="header__log btn btn-light p-2 ml-1" href="#"><i class="fa fa-user "></i> Đăng
+                                    ký</a>
+                            </div>
+                            @endauth
+
+                        @endif
                     </div>
                 </div>
             </div>
