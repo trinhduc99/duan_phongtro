@@ -13,7 +13,7 @@
             <select class="custom-select fixed" id="province">
                 <option>Chọn tỉnh thành</option>
                 @foreach($provinces as $province)
-                    <option value="{{$province->id}}">{{$province->name}}</option>
+                    <option value="{{$province->id}}">{{$province->_name}}</option>
                 @endforeach
             </select>
         </div>

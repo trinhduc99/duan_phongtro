@@ -15,8 +15,15 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $table = 'users';
+    public const GENDER = [
+        'male' => 'nam',
+        'female' => 'nu',
+        'diff' => 'khac'
+    ];
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','amount','phone',
+        'gender', 'avatar_path', 'avatar_name'
     ];
 
     /**

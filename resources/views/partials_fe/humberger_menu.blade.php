@@ -8,8 +8,8 @@
             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
         </ul>
     </div>
+{{--    @if (Route::has('login'))--}}
     <div class="humberger__menu__widget">
-
         <div class="header__top__right__auth">
             <a href="#"><i class="fa fa-user"></i> Đăng nhập</a>
         </div>
@@ -17,6 +17,7 @@
             <a href="#"><i class="fa fa-user"></i> Đăng xuất</a>
         </div>
     </div>
+{{--    @endif--}}
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
             <li class="active"><a href="#">TRANG CHỦ</a></li>

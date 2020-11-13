@@ -1,7 +1,10 @@
 <div id="mobile_panel">
     <div class="top">
-        <div style="display: inline-block; margin-right: 10px;">Xin chào, <strong>Trịnh Văn Đức</strong>. Mã tài khoản:
-            <strong>99183</strong>. Số dư: <strong>10.000 VNĐ</strong></div>
+        @php
+        $user = \Illuminate\Support\Facades\Auth::user();
+        @endphp
+        <div style="display: inline-block; margin-right: 10px;">Xin chào, <strong>{{$user->name}}</strong>. Mã tài khoản:
+            <strong>{{$user->id}}</strong>. Số dư: <strong>{{number_format($user->amount)}}</strong></div>
         <div style="display: inline-block" class="dropdown">
             <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">

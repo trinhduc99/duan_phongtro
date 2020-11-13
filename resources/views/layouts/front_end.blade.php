@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="{{asset('front_end/css/bootstrap.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('front_end/css/font-awesome.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('front_end/css/elegant-icons.css')}}" type="text/css">
-{{--    <link rel="stylesheet" href="{{asset('front_end/css/nice-select.css')}}" type="text/css">--}}
     <link rel="stylesheet" href="{{asset('front_end/css/jquery-ui.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('front_end/css/owl.carousel.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('front_end/css/slicknav.min.css')}}" type="text/css">
@@ -40,8 +39,6 @@
 <script src="{{asset('front_end/js/jquery-3.3.1.min.js')}}"></script>
 <script src="{{asset('front_end/js/popper.min.js')}}"></script>
 <script src="{{asset('front_end/js/bootstrap.min.js')}}"></script>
-
-{{--<script src="{{asset('front_end/js/jquery.nice-select.min.js')}}"></script>--}}
 <script src="{{asset('front_end/js/jquery-ui.min.js')}}"></script>
 <script src="{{asset('front_end/js/jquery.slicknav.js')}}"></script>
 <script src="{{asset('front_end/js/mixitup.min.js')}}"></script>

@@ -1,6 +1,6 @@
 $(document).ready(function (){
     $('#province').change(function () {
-        var province_id = $("#province option:selected").val();
+        let province_id = $("#province option:selected").val();
         if(province_id) {
             $.ajax({
                     headers: {
@@ -16,14 +16,14 @@ $(document).ready(function (){
                     $("#ward").empty()
                         .append('<option>Chọn Phường Xã</option>');
                     $.each(res,function(key,value){
-                        $("#district").append('<option value="'+value.id+'">'+value.name+'</option>');
+                        $("#district").append('<option value="'+value.id+'">'+value._name+'</option>');
                     });
                 }
             })
         }
     });
     $('#district').change(function () {
-        var ward = $("#district option:selected").val();
+        let ward = $("#district option:selected").val();
         if(ward) {
             $.ajax({
                 headers: {
@@ -37,19 +37,14 @@ $(document).ready(function (){
                     $("#ward").empty()
                         .append('<option>Chọn Phường Xã</option>');
                     $.each(res,function(key,value){
-                        $("#ward").append('<option value="'+value.id+'">'+value.name+'</option>');
+                        $("#ward").append('<option value="'+value.id+'">'+value._name+'</option>');
                     });
                 }
             })
         }
     })
 
-    $('.click_heart').on('click', function () {
-      let x =0;
-      if(x==0) {
 
-      }
-    })
 
 })
 
