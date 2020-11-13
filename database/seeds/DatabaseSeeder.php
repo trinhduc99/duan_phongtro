@@ -19,5 +19,14 @@ class DatabaseSeeder extends Seeder
 //            'password' => Hash::make('password'),
 //            'phone'=>'098765432',
 //        ]);
+         $this->call([
+             GroupUserSeeder::class,
+             CategoriesSeeder::class,
+             ServiceSeeder::class,
+             FakePostData::class,
+//             FakePostInterestData::class,
+//             FakePostRecentData::class,
+//             FakeUserSeeder::class,
+         ]);
     }
 }

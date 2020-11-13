@@ -8,8 +8,12 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasApiTokens, HasRoles;
+    public static $GROUP_ID = [
+        'admin' => 1, 'user' => 2
+    ];
 
+    public static $NUMBER_RECORD_FAKE = 20;
     /**
      * The attributes that are mass assignable.
      *

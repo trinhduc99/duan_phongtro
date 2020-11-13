@@ -12,5 +12,7 @@ Route::prefix('admin')->group(function () {
             'uses' => 'CategoryController@index',
         ]);
     });
+
+
 });
 
