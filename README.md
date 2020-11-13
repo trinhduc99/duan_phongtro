@@ -16,8 +16,18 @@
 
 
 ### Màn hình 
+Chung: 
+Post: Truowng dai hoc
+Service Type
+Day - Week - Month
+Loại hình cho thuê: (chung cư min, Văn phòng, ) => đăng bai
 
-Post:
+Frontend 
+Post: 
+- Nội dung mô tả cho xuống cuối cùng trước đăng anh
+- Thông tin liên hệ (Mục to)
+-  
+
 
 Làm giống giao diện https://bds123.vn/
 + Bổ sung thêm select tiện ích (tủ lạnh, điều hòa, ...)
@@ -25,9 +35,10 @@ Làm giống giao diện https://bds123.vn/
 + Bảng giá tham khảo: https://phongtro123.com/quan-ly/dang-tin-moi.html
 
 ### Quản Lý bài tin:
-+ Giống bds123.
-+ Tất cả bài viết/ Đã đăng / Chờ duyệt / Từ chối  
-+ Filter: Loại dịch vụ / Loại bài viết (thuê/tìm người ở ghep)
+
+Post => [service_type, service_type] 
+
+
 
 + Bài viết -> thuê 
 + Bài viết -> Duyệt -> Từ chối (note)
