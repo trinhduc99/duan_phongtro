@@ -46,6 +46,21 @@ class Post extends Model
         'private' => 'Private',
         'public' => 'Public'
     ];
+    public static $SERIVCE_TYPE = [
+        'day' => 'Đăng theo ngày',
+
+    ];
+
+    public static $inut = [
+        'day'  => [
+            '1 ngày',
+            '2 ngày'
+        ],
+        'week' => [],
+        'month ' => [
+
+        ]
+    ];
 
     public static $NUMBER_RECORD_FAKE = 200;
     public static $MOTEL_ITEM = [
