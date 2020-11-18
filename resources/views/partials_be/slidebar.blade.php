@@ -18,7 +18,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item has-treeview">
-                    <a class="nav-link nav-dropdown-toggle" href="#">
+                    <a class="nav-link nav-dropdown-toggle" href="">
                         <i class="fa-fw fas fa-users-cog">
                         </i>
                         <p>
@@ -71,16 +71,17 @@
                         <i class="fa-fw fas fa-cogs">
                         </i>
                         <p>
-                            <span>BAI ĐĂNG</span>
+                            <span>BÀI ĐĂNG</span>
                             <i class="right fa fa-fw fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="" class="nav-link">
+
                                 <i class="nav-icon fas fa-portrait"></i>
                                 <p>
-                                    DANG SÁCH BÀI ĐĂNG
+                                    TẤT CẢ BÀI ĐĂNG
                                 </p>
                             </a>
                         </li>
@@ -89,7 +90,7 @@
                                 <i class="nav-icon fas fa-portrait">
                                 </i>
                                 <p>
-                                    BÀI ĐĂNG CHO DUYET
+                                    BÀI ĐĂNG CHỜ DUYỆT
                                 </p>
                             </a>
                         </li>
@@ -98,7 +99,7 @@
                                 <i class="nav-icon fas fa-portrait">
                                 </i>
                                 <p>
-                                    BÀI ĐĂNG DA DUYET
+                                    BÀI ĐĂNG ĐÃ DUYỆT
                                 </p>
                             </a>
                         </li>
@@ -107,7 +108,7 @@
                                 <i class="nav-icon fas fa-portrait">
                                 </i>
                                 <p>
-                                    BÀI ĐĂNG DA DUYET
+                                    BÀI ĐĂNG BỊ TỪ CHỐI
                                 </p>
                             </a>
                         </li>
@@ -116,16 +117,7 @@
                                 <i class="nav-icon fas fa-portrait">
                                 </i>
                                 <p>
-                                    BÀI ĐĂNG BI TU CHOI
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link ">
-                                <i class="nav-icon fas fa-portrait">
-                                </i>
-                                <p>
-                                    BÀI ĐĂNG VI PHAM
+                                    BÀI ĐĂNG VI PHẠM
                                 </p>
                             </a>
                         </li>
@@ -203,3 +195,4 @@
         </nav>
     </div>
 </aside>
+

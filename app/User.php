@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasApiTokens, HasRoles;
+    use Notifiable;
     public static $GROUP_ID = [
         'admin' => 1, 'user' => 2
     ];
