@@ -46,19 +46,23 @@ class Post extends Model
         'private' => 'Private',
         'public' => 'Public'
     ];
-    public static $SERIVCE_TYPE = [
-        'day' => 'Đăng theo ngày',
-
+    public static $SERVICE_TYPE = [
+        'day' => ['Đăng theo ngày', 'Day'],
+        'week' => ['Đăng theo tuần', 'Week'],
+        'month' => ['Đăng theo tháng', 'Month']
     ];
 
-    public static $inut = [
+    public static $UNIT_POST = [
         'day'  => [
-            '1 ngày',
-            '2 ngày'
+            1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+            11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+            21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
         ],
-        'week' => [],
-        'month ' => [
-
+        'week' => [
+            1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+        ],
+        'month' => [
+            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
         ]
     ];
 

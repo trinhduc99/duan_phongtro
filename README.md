@@ -18,8 +18,8 @@
 ### Màn hình 
 Chung: 
 Post: Truowng dai hoc
-Service Type
-Day - Week - Month
+Service Type: Done
+Day - Week - Month: Done
 
 
 Frontend 
@@ -27,7 +27,7 @@ Frontend
  
 - Nội dung mô tả cho xuống cuối cùng trước đăng anh
 - Thông tin liên hệ (Mục to)
-+ Chung chủ hay không (Radio box) 
+- Chung chủ hay không (Radio box):  
 
 
 
