@@ -42,13 +42,21 @@ class PostController extends Controller
     }
 
     public function adminShowAllPost () {
+
         $posts = Post::get();
+        $provinces = new ProfileController();
+//        $provinces = $provinces->
         return view('admin.posts.all-post', ['posts' => $posts]);
     }
 
     public function getPost ($id) {
         $post = Post::find($id);
         return response()->json(['success' => true, $post], 200);
+    }
+
+    public function adminShowApprovedPost () {
+        $posts = Post::where('status', Post::$POST_STATUS['approved'])->get();
+        return view('admin.posts.approved-post', ['posts' => $posts]);
     }
 
     public function adminShowPendingPost () {

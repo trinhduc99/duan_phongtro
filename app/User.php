@@ -10,7 +10,7 @@ class User extends Authenticatable
 {
     use Notifiable;
     public static $GROUP_ID = [
-        'admin' => 1, 'user' => 2
+        'admin' => 1, 'users' => 2
     ];
 
     public static $NUMBER_RECORD_FAKE = 20;

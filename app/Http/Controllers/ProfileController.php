@@ -31,6 +31,7 @@ class ProfileController extends Controller
         return view('front_end.profile.add', compact('categories', 'provinces'));
     }
 
+
     public function getDistrict($id)
     {
         $districts = DB::table('district')->where('_province_id', $id)->get(["_name", "id"]);

@@ -22,7 +22,7 @@ class PayInController extends Controller
         }
         $userCondition = [
             'id' => $request['receiver_id'],
-            'group_id' => User::$GROUP_ID['user']
+            'group_id' => User::$GROUP_ID['users']
         ];
         $checkReceiver = User::where($userCondition)->count();
         if ($checkReceiver != 1) {
@@ -51,7 +51,7 @@ class PayInController extends Controller
         }
         $userCondition = [
             'id' => $request['receiver_id'],
-            'group_id' => User::$GROUP_ID['user']
+            'group_id' => User::$GROUP_ID['users']
         ];
         $checkReceiver = User::where($userCondition)->count();
         if ($checkReceiver != 1) {

@@ -8,6 +8,8 @@ Route::prefix('quan-ly')->group(function () {
         'as' => 'profile.index',
         'uses' => 'ProfileController@index',
     ]);
+
+
     Route::get('/dang-tin-moi', [
         'as' => 'profile.create',
         'uses' => 'ProfileController@create',
@@ -30,11 +32,33 @@ Route::prefix('quan-ly')->group(function () {
 
 Route::prefix('admin')->group(function () {
     Route::prefix('posts')->group(function () {
-       Route::get('/all-post', 'PostController@adminShowAllPost');
-       Route::get('/pending-post', 'PostController@adminShowPendingPost');
-       Route::get('/denied-post', 'PostController@adminShowDeniedPost');
-       Route::get('/violate-post', 'PostController@adminShowViolatePost');
+       Route::get('/all-post', [
+           'as' => 'admin.posts.all-post',
+           'uses' => 'PostController@adminShowAllPost']);
+       Route::get('/pending-post', [
+           'as' => 'admin.posts.pending-post',
+           'uses' => 'PostController@adminShowPendingPost'
+       ]);
+        Route::get('/approved-post', [
+            'as' => 'admin.posts.approved-post',
+            'uses' => 'PostController@adminShowApprovedPost'
+        ]);
+       Route::get('/denied-post', [
+           'as' => 'admin.posts.denied-post',
+           'uses' => 'PostController@adminShowDeniedPost'
+       ]);
+       Route::get('/violate-post', [
+           'as' => 'admin.posts.violate-post',
+           'uses' => 'PostController@adminShowViolatePost'
+       ]);
     });
+    Route::prefix('users')->group(function(){
+        Route::get('/user',[
+           'as' => 'admin.users.user',
+           'uses' => 'UserController@adminGetAllUser'
+        ]);
+    });
+
 
 });
 Route::get('/post/{id}', 'PostController@getPost');

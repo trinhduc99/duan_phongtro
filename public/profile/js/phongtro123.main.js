@@ -17,7 +17,7 @@ front_app = {
                 btn_submit.html('Đang xử lý...');
 
                 $.ajax({
-                    url: base_url + "/user/login",
+                    url: base_url + "/users/login",
                     data: $(".js-login-form").serialize(),
                     type: "POST",
                     dataType: "json",
@@ -35,7 +35,7 @@ front_app = {
                 btn_submit.html('Đang xử lý...');
 
                 $.ajax({
-                    url: base_url + "/user/login",
+                    url: base_url + "/users/login",
                     data: $(".js-login-form-popup").serialize(),
                     type: "POST",
                     dataType: "json",
@@ -53,7 +53,7 @@ front_app = {
                 let btn_submit_text = btn_submit.html();
                 btn_submit.html('Đang xử lý...');
                 $.ajax({
-                    url: base_url + "/user/register",
+                    url: base_url + "/users/register",
                     data: $(".js-register-form").serialize(),
                     type: "POST",
                     dataType: "json",
@@ -71,7 +71,7 @@ front_app = {
                 btn_submit.html('Đang xử lý...');
 
                 $.ajax({
-                    url: base_url + "/user/register",
+                    url: base_url + "/users/register",
                     data: $(".js-register-form-popup").serialize(),
                     type: "POST",
                     dataType: "json",
@@ -97,7 +97,7 @@ front_app = {
                     .attr("data-next-step");
 
                 $.ajax({
-                    url: base_api_url+ '/user/send-token',
+                    url: base_api_url+ '/users/send-token',
                     data: {
                         phone: phone,
                         action:'forget_password'
@@ -131,7 +131,7 @@ front_app = {
                     .find(".js-forgot-password-next-step")
                     .attr("data-next-step");
                 $.ajax({
-                    url: base_api_url+ '/user/verify-token',
+                    url: base_api_url+ '/users/verify-token',
                     data: {
                         verify_code: verify_code,
                         phone_or_email: phone,
@@ -167,7 +167,7 @@ front_app = {
                     .find(".js-forgot-password-next-step")
                     .attr("data-next-step");
                 $.ajax({
-                    url: base_api_url+'/user/update/password',
+                    url: base_api_url+'/users/update/password',
                     data: {
                         password: password,
                         cf_password: cf_password,
@@ -283,7 +283,7 @@ front_app = {
             }
         },
         logout:function(){
-            $('.js-header-control-user-login').on('click', '.js-user-logout', function(event){
+            $('.js-header-control-users-login').on('click', '.js-users-logout', function(event){
                 event.preventDefault();
                 let _self = $(this);
                 let logout_url = _self.attr('href');

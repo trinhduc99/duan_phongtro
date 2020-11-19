@@ -9,7 +9,7 @@ class GroupUser extends Model
     protected $table = 'group_users';
 
     public static $GROUP = [
-        'user' => 'User',
+        'users' => 'User',
         'admin' => 'Admin'
     ];
 }
