@@ -43,10 +43,10 @@ class PostController extends Controller
 
     public function adminShowAllPost () {
 
-        $posts = Post::get();
-        $provinces = new ProfileController();
-//        $provinces = $provinces->
-        return view('admin.posts.all-post', ['posts' => $posts]);
+        $posts = Post::limit(10)->get();
+        $provinces = new ProvinceController();
+        $provinces = $provinces->getAllProvince();
+        return view('admin.posts.all-post', ['posts' => $posts, 'provinces' => $provinces]);
     }
 
     public function getPost ($id) {
@@ -57,6 +57,11 @@ class PostController extends Controller
     public function adminShowApprovedPost () {
         $posts = Post::where('status', Post::$POST_STATUS['approved'])->get();
         return view('admin.posts.approved-post', ['posts' => $posts]);
+    }
+
+    public function adminShowDetailPost ($id) {
+        $post = Post::find($id);
+        return view('admin.post.index', ['post' => $post]);
     }
 
     public function adminShowPendingPost () {

@@ -16,6 +16,12 @@
 + php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
 + php artisan migrate
 
+Link form:
+https://codingdriver.com/laravel-ajax-crud-example-tutorial-from-scratch.html
+https://www.itsolutionstuff.com/post/laravel-6-ajax-crud-tutorialexample.html
+https://xpertphp.com/laravel-7-crud-operation-with-ajax-example/
+
+
 
 
 ### Màn hình 

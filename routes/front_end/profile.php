@@ -52,6 +52,12 @@ Route::prefix('admin')->group(function () {
            'uses' => 'PostController@adminShowViolatePost'
        ]);
     });
+    Route::prefix('post')->group(function () {
+       Route::get('/{id}', [
+          'as' => 'admin.post.{id}',
+          'uses' => 'PostController@adminShowDetailPost'
+       ]);
+    });
     Route::prefix('users')->group(function(){
         Route::get('/user',[
            'as' => 'admin.users.user',
