@@ -79,6 +79,14 @@ class PostController extends Controller
         return view('admin.posts.violate-post', ['posts' => $posts]);
     }
 
+    public function getUserPosts (Request $request) {
+        $creator_id = 11;
+        $post = Post::where('creator_id', $creator_id)->get();
+
+        $provinces = new ProvinceController();
+        $provinces = $provinces->getAllProvince();
+        return view('pages.post.index', ['posts' => $post, 'provinces' => $provinces]);
+    }
     /*
      *  Search post
     */

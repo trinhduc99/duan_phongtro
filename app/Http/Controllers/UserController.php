@@ -15,6 +15,11 @@ class UserController extends Controller
         $users = User::get();
         return view('admin.users.user', ['users' => $users]);
     }
+    public function adminGetAllAdmin () {
+        $users = User::get();
+        return view('admin.users.admin', ['users' => $users]);
+    }
+
 
      
 

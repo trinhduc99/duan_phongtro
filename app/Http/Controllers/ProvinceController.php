@@ -10,6 +10,6 @@ class ProvinceController extends Controller
     public function getAllProvince ()
     {
         $provinces = Provinces::select('id', 'name')->get();
-        return response()->json($provinces);
+        return $provinces;
     }
 }

@@ -37,7 +37,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link ">
+                            <a href="{{route("admin.users.admin")}}" class="nav-link ">
                                 <i class="fa-fw fas fa-users"></i>
                                 <p>
                                     <span>Tài khoản Admin</span>

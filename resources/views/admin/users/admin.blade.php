@@ -2,7 +2,7 @@
 @section('content')
   <div class="card">
     <div class="card-header">
-      <h2>Quản lý tài khoản người dùng</h2>
+      <h2>Quản lý tài khoản admin</h2>
     </div>
 
     <div class="card-body">
@@ -38,36 +38,36 @@
           </thead>
 
           <tbody>
-            @foreach($users as $user)
-              <tr>
-                <td>
-                  {{ $loop->index + 1 }}
-                </td>
-                <td>
-                  {{ $user->id }}
-                </td>
-                <td>
-                  {{ $user->name }}
-                </td>
-                <td>
-                  {{ $user->email }}
-                </td>
-                <td>
-                  {{ $user->phone }}
-                </td>
-                <td>
-                  {{ $user->gender ?? "None" }}
-                </td>
-                <td>
-                  {{ $user->amount }}
-                </td>
-                <td>
-                  {{ $user->status ?? "None" }}
-                </td>
+          @foreach($users as $user)
+            <tr>
+              <td>
+                {{ $loop->index + 1 }}
+              </td>
+              <td>
+                {{ $user->id }}
+              </td>
+              <td>
+                {{ $user->name }}
+              </td>
+              <td>
+                {{ $user->email }}
+              </td>
+              <td>
+                {{ $user->phone }}
+              </td>
+              <td>
+                {{ $user->gender ?? "None" }}
+              </td>
+              <td>
+                {{ $user->amount }}
+              </td>
+              <td>
+                {{ $user->status ?? "None" }}
+              </td>
 
 
-              </tr>
-              @endforeach
+            </tr>
+          @endforeach
           </tbody>
         </table>
       </div>

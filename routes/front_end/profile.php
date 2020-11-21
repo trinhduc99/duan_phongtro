@@ -63,8 +63,17 @@ Route::prefix('admin')->group(function () {
            'as' => 'admin.users.user',
            'uses' => 'UserController@adminGetAllUser'
         ]);
+        Route::get('/admin',[
+            'as' => 'admin.users.admin',
+            'uses' => 'UserController@adminGetAllAdmin'
+        ]);
     });
 
 
 });
-Route::get('/post/{id}', 'PostController@getPost');
+Route::get('/posts', [
+    'as' => 'posts',
+    'uses' => 'PostController@getUserPosts']);
+Route::get('/post/{id}', [
+    'as' => 'post',
+    'uses' => 'PostController@getPost']);
