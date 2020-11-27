@@ -85,7 +85,13 @@ class PostController extends Controller
 
         $provinces = new ProvinceController();
         $provinces = $provinces->getAllProvince();
+
         return view('pages.post.index', ['posts' => $post, 'provinces' => $provinces]);
+    }
+
+    public function getItems () {
+        $items = Post::$MOTEL_ITEM;
+        return view('admin.others.items', ['items' => $items]);
     }
     /*
      *  Search post

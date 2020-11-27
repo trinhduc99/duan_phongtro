@@ -70,20 +70,87 @@ class Post extends Model
     public static $MOTEL_ITEM = [
         // điều hòa, nóng lạnh,
         // vệ sinh khép kín, chung chủ/không chung chủ, bếp : description
-        ['' => ['', 'Điều hòa']],
-        ['' => ['', 'Bình nóng lạnh']],
-        ['' => ['', 'Ban công']],
-        ['' => ['', 'Tủ lạnh']],
-        ['' => ['', 'Máy giặt']],
-        ['' => ['', 'Giường']],
-        ['' => ['', 'Quạt trần']],
-        ['' => ['', 'Quạt treo tường']],
-        ['' => ['', 'Giường']],
-        ['' => ['', 'Tủ đựng quần áo']],
-        ['' => ['', 'Bàn học']],
-        ['' => ['', 'Ghế']],
-        ['' => ['', 'Bàn học']],
-        ['' => ['', 'Đèn học']],
+        [
+            'key' => 'loft',
+            'value' => 'Gác xép'
+        ],
+        [
+            'key' => 'window',
+            'value' => 'Cửa sổ'
+        ],
+        [
+            'key' => 'camera',
+            'value' => 'Camera'
+        ],
+        [
+            'key' => 'washing_machine',
+            'value' => 'Máy giặt'
+        ],
+        [
+            'key' => 'air_conditioner',
+            'value' => 'Điều hòa'
+        ],
+        [
+            'key' => 'fridge',
+            'value' => 'Tủ lạnh'
+        ],
+        [
+            'key' => '',
+            'value' => 'Ti vi'
+        ],
+        [
+            'key' => 'television',
+            'value' => 'Bình nước nóng'
+        ],
+        [
+            'key' => 'berth',
+            'value' => 'Giường ngủ'
+        ],
+        [
+            'key' => 'mattress',
+            'value' => 'Có đệm'
+        ],
+        [
+            'key' => 'kitchen',
+            'value' => 'Chỗ nấu nướng'
+        ],
+        [
+            'key' => 'desk',
+            'value' => 'Bàn làm việc'
+        ],
+        [
+            'key' => 'closet',
+            'value' => 'Tủ quần áo'
+        ],
+        [
+            'key' => 'floor',
+            'value' => 'Sàn gỗ'
+        ],
+        [
+            'key' => 'balcony',
+            'value' => 'Ban công'
+        ],
+        [
+            'key' => 'san_phoi',
+            'value' => 'Sân phơi'
+        ],
+        [
+            'key' => 'don_ve_sinh',
+            'value' => 'Dịch vụ dọn vệ sinh hàng tuần'
+        ],
+        [
+            'key' => 'parking_area',
+            'value' => 'Chỗ để xe'
+        ],
+        [
+            'key' => 'gym',
+            'value' => 'Gần phòng Gym'
+        ],
+        [
+            'key' => 'fan',
+            'value' => 'Quạt'
+        ],
+
 
     ];
     public function scopeSearchPost ($query, $arrSearch)

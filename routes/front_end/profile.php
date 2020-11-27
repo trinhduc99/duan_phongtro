@@ -68,6 +68,12 @@ Route::prefix('admin')->group(function () {
             'uses' => 'UserController@adminGetAllAdmin'
         ]);
     });
+    Route::prefix('others')->group(function () {
+       Route::get('item', [
+          'as' => 'admin.others.item',
+          'uses' => 'PostController@getItems'
+       ]);
+    });
 
 
 });

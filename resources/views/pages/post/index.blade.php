@@ -120,6 +120,18 @@
                     </div>
                   </div>
 
+                  <div>
+                    <label for="province"> Quận/Huyện</label>
+                    <div>
+                      <select id="province" name="province">
+                        <option value="">-- Chọn Quận/Huyện --</option>
+                        @foreach($districts as $district)
+                          <option value="{{ $district->id }}">{{$district->name}}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
+
                   <div class="form-group">
                     <label class="col-sm-2">Mô tả</label>
                     <div class="col-sm-12">
