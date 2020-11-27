@@ -12,6 +12,15 @@ Route::prefix('quan-ly')->group(function () {
         'as' => 'profile.create',
         'uses' => 'ProfileController@create',
     ]);
+    Route::post('/dang-tin-moi/store', [
+        'as' => 'profile.store',
+        'uses' => 'ProfileController@store',
+    ]);
+    Route::post('/dang-tin-moi/storeImage', [
+        'as' => 'profile.storeImage',
+        'uses' => 'ProfileController@storeImage',
+    ]);
+
     Route::post('/get-districts-by-provinces/{id}', [
         'as' => 'profile.create.get-districts-by-provinces',
         'uses' => 'ProfileController@getDistrict',
@@ -20,9 +29,4 @@ Route::prefix('quan-ly')->group(function () {
         'as' => 'profile.create.get-wards-by-districts',
         'uses' => 'ProfileController@getWard',
     ]);
-    Route::post('/get-streets/{id}/{id2}', [
-        'as' => 'profile.create.get-streets',
-        'uses' => 'ProfileController@getStreet',
-    ]);
-
 });

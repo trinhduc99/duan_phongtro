@@ -16,13 +16,16 @@ class SqlSeeder extends Seeder
         $district = base_path() . '/database/seeds/local/district.sql';
         $ward = base_path() . '/database/seeds/local/ward.sql';
         $street = base_path() . '/database/seeds/local/street.sql';
+        $project = base_path() . '/database/seeds/local/project.sql';
         $sql_province = file_get_contents($province);
         $sql_district = file_get_contents($district);
         $sql_ward = file_get_contents($ward);
         $sql_street = file_get_contents($street);
+        $sql_project = file_get_contents($project);
         DB::unprepared($sql_province);
         DB::unprepared($sql_district);
         DB::unprepared($sql_street);
         DB::unprepared($sql_ward);
+//        DB::unprepared($sql_project);
     }
 }
