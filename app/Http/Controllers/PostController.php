@@ -45,8 +45,17 @@ class PostController extends Controller
 
         $posts = Post::limit(10)->get();
         $provinces = new ProvinceController();
+        $districts = new DistrictController();
+        $wards = new WardController();
         $provinces = $provinces->getAllProvince();
-        return view('admin.posts.all-post', ['posts' => $posts, 'provinces' => $provinces]);
+        $districts = $districts->getAllDistrict();
+        $wards = $wards->getAllWard();
+        return view('admin.posts.all-post', [
+            'posts' => $posts,
+            'provinces' => $provinces,
+            'districts' => $districts,
+            'wards' => $wards
+        ]);
     }
 
     public function getPost ($id) {

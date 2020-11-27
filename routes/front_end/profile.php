@@ -53,8 +53,8 @@ Route::prefix('admin')->group(function () {
        ]);
     });
     Route::prefix('post')->group(function () {
-       Route::get('/{id}', [
-          'as' => 'admin.post.{id}',
+       Route::get('', [
+          'as' => 'admin.post',
           'uses' => 'PostController@adminShowDetailPost'
        ]);
     });

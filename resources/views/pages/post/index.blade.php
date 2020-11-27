@@ -96,7 +96,7 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="modal-title"></h4>
+                <h4 class="modal-title">Modal</h4>
               </div>
               <div class="modal-body">
                 <form name="userForm" class="form-horizontal">
@@ -168,19 +168,22 @@
   function getPost(event) {
       var id  = $(event).data("id");
       let _url = `/post/${id}`;
-      $.ajax({
-          url: _url,
-          type: "GET",
-          success: function(response) {
-              if(response.success === true) {
-                  response = response[0];
-                  $("#post_id").val(response.id);
-                  $("#title").val(response.title);
-                  $("#description").val(response.description);
-                  $('#post-modal').modal('show');
-              }
-          }
-      });
+      // $('#post-modal').modal('show');
+      // $.ajax({
+      //     url: _url,
+      //     type: "GET",
+      //     success: function(response) {
+      //         if(response.success === true) {
+      //             response = response[0];
+      //             $("#post_id").val(response.id);
+      //             $("#title").val(response.title);
+      //             $("#description").val(response.description);
+      //             $('#post-modal').modal('show');
+      //         } else {
+      //             $('#post-modal').modal('show');
+      //         }
+      //     }
+      // });
   }
 </script>
 

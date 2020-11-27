@@ -26,7 +26,8 @@ class Post extends Model
     public static $USER_OBJECT = [
        'none' => 'None',
        'student' => 'Student',
-       'worker' => 'Worker'
+       'worker' => 'Worker',
+        'family' => 'Family'
     ];
 
     public static $WATER_CALCULATE_METHOD = [
