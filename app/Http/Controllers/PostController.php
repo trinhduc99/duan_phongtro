@@ -47,19 +47,27 @@ class PostController extends Controller
         $provinces = new ProvinceController();
         $districts = new DistrictController();
         $wards = new WardController();
+        $items = new ItemsController();
         $provinces = $provinces->getAllProvince();
         $districts = $districts->getAllDistrict();
         $wards = $wards->getAllWard();
+        $items = $items->getAllItem();
+
         return view('admin.posts.all-post', [
             'posts' => $posts,
             'provinces' => $provinces,
             'districts' => $districts,
-            'wards' => $wards
+            'wards' => $wards,
+            'items' => $items
+
         ]);
     }
 
     public function getPost ($id) {
         $post = Post::find($id);
+        $user_id = $post['creator_id'];
+        $phone = User::select('phone')->where('id', $user_id)->get();
+        $post['phone'] = $phone[0]['phone'];
         return response()->json(['success' => true, $post], 200);
     }
 

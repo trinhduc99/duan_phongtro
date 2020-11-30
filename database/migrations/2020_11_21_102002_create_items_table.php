@@ -13,7 +13,12 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
-
+        Schema::create('items', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->nullable(false);
+            $table->string('key')->nullable(false);
+            $table->timestamps();
+        });
     }
 
     /**

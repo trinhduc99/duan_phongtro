@@ -65,7 +65,7 @@
                   @if ($post->status == 'Violate')
                     <button type="button" name="violate" class="btn btn-warning" data-id="{{$post->id}}">Vi phạm</button>
                   @endif
-                  <button type="button" class="btn btn-primary" data-id="{{$post->id}}" data-toggle="modal" data-target="#post-modal">
+                  <button type="button" class="btn btn-primary" data-id="{{$post->id}}" data-toggle="modal" data-target="#post-modal" onclick="getPost(event.target)">
                     Thao Tác
                   </button>
 
@@ -302,21 +302,24 @@
 
             <div class="form-group">
               <label for="deposit">Đặt cọc tiền </label>
-              <select id="deposit" name="deposit">
-                <option value="none">Không cần đặt cọc</option>
-                <option value="1">1 tháng</option>
-                <option value="2">2 tháng</option>
-                <option value="3">3 tháng</option>
-                <option value="4">4 tháng</option>
-                <option value="5">5 tháng</option>
-                <option value="6">6 tháng</option>
-                <option value="7">7 tháng</option>
-                <option value="8">8 tháng</option>
-                <option value="9">9 tháng</option>
-                <option value="10">10 tháng</option>
-                <option value="11">11 tháng</option>
-                <option value="12">12 tháng</option>
-              </select>
+              <div>
+                <select id="deposit" name="deposit">
+                  <option value="none">Không cần đặt cọc</option>
+                  <option value="1">1 tháng</option>
+                  <option value="2">2 tháng</option>
+                  <option value="3">3 tháng</option>
+                  <option value="4">4 tháng</option>
+                  <option value="5">5 tháng</option>
+                  <option value="6">6 tháng</option>
+                  <option value="7">7 tháng</option>
+                  <option value="8">8 tháng</option>
+                  <option value="9">9 tháng</option>
+                  <option value="10">10 tháng</option>
+                  <option value="11">11 tháng</option>
+                  <option value="12">12 tháng</option>
+                </select>
+              </div>
+
             </div>
 
 
@@ -325,10 +328,62 @@
                 <label for="items">Tiện ích phòng trọ</label>
                 <div class="row">
                   @foreach($items as $item)
-
+                    <div class="col-lg-6">
+                      <input type="checkbox" id="{{ $item->key }}" value="{{ $item->key }}">
+                      <label for="{{ $item->key }}">{{ $item->name }}</label>
+                    </div>
                   @endforeach
                 </div>
                 @endif
+            </div>
+
+            <div class="form-group">
+              <label for="note">Ghi chú</label>
+              <textarea id="note" name="note"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="is_booked">Trạng thái phòng</label>
+              <div class="row">
+                <div class="col-lg-3">Chưa thuê</div>
+                <label class="switch">
+                  <input type="checkbox" name="is_boooked">
+                  <span class="slider round"></span>
+                </label>
+                <div class="col-lg-3">Đã thuê</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="in_duration">Hạn bài đăng</label>
+              <div class="row">
+                <div class="col-lg-3">Hết hạn</div>
+                <label class="switch">
+                  <input type="checkbox" name="is_boooked">
+                  <span class="slider round"></span>
+                </label>
+                <div class="col-lg-3">Gia hạn</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div>
+                <label for="created_at">Ngày tạo bài viết</label><br>
+                <input type="datetime-local" id="created_at" name="created_at" width="276" />
+              </div><br>
+              <div>
+                <label for="start_date">Ngày bắt đầu hiển thị</label><br>
+                <input type="datetime-local" id="start_date" name="start_date" width="276" />
+              </div><br>
+              <div>
+                <label for="finish_date">Hết ngày hiển thị</label><br>
+                <input type="datetime-local" id="finish_date" name="finish_date" width="276" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div >Trạng thái bài viết</div>
+              <div>TRangj thia</div>
 
             </div>
 
@@ -345,9 +400,70 @@
   @endsection
 
 <style>
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
 
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
 </style>
 <script>
+
 
     function getPost(event) {
         var id  = $(event).data("id");
@@ -361,11 +477,18 @@
                     $("#post_id").val(response.id);
                     $("#title").val(response.title);
                     $("#description").val(response.description);
-                    $("#province").val(response.provinces);
-                    $("#district").val(response.districts);
-                    // $('#post-modal').modal('show');
+                    $("#province").val(response.province_id);
+                    $("#district").val(response.district_id);
+                    $("#ward").val(response.ward_id);
+                    $("#home-number").val(response.id);
+                    $("#address").val(response.address);
+                    $("#phone").val(response.phone);
+
                 }
-            }
+
+            },
+
+
         });
     }
 </script>

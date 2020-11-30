@@ -96,11 +96,11 @@ class Post extends Model
             'value' => 'Tủ lạnh'
         ],
         [
-            'key' => '',
+            'key' => 'television',
             'value' => 'Ti vi'
         ],
         [
-            'key' => 'television',
+            'key' => 'heater',
             'value' => 'Bình nước nóng'
         ],
         [
@@ -137,7 +137,7 @@ class Post extends Model
         ],
         [
             'key' => 'don_ve_sinh',
-            'value' => 'Dịch vụ dọn vệ sinh hàng tuần'
+            'value' => 'Dọn vệ sinh hàng tuần'
         ],
         [
             'key' => 'parking_area',
