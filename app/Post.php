@@ -67,6 +67,10 @@ class Post extends Model
         ]
     ];
 
+    public static $IS_SHARE_TOILET = [
+      'yes' => 1, 'no' => 0
+    ];
+
     public static $NUMBER_RECORD_FAKE = 200;
     public static $MOTEL_ITEM = [
         // điều hòa, nóng lạnh,

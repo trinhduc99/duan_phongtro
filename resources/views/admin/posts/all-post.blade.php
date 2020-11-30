@@ -191,16 +191,16 @@
                 <label>Giới tính người thuê</label>
                 <div class="row">
                   <div class="col-lg-4">
-                    <input type="radio" id="none" name="gender" value="None" checked>
-                    <label for="male">Không bắt buộc</label>
+                    <input type="radio" id="none" name="gender" value="None" class="Gender-None">
+                    <label for="none">Không bắt buộc</label>
                   </div>
                   <div class="col-lg-4">
-                    <input type="radio" id="male" name="gender" value="Male">
+                    <input type="radio" id="male" name="gender" value="Male" class="Gender-Male">
                     <label for="male">Nam</label>
                   </div>
                   <div class="col-lg-4">
-                    <input type="radio" id="female" name="gender" value="Female">
-                    <label for="male">Nữ</label>
+                    <input type="radio" id="female" name="gender" value="Female" class="Gender-Female">
+                    <label for="female">Nữ</label>
                   </div>
                 </div>
             </div>
@@ -208,7 +208,7 @@
               <label>Đôi tượng thuê nhà</label>
               <div class="row">
                 <div class="col-lg-3">
-                  <input type="checkbox" id="none" name="user_object" value="None" checked>
+                  <input type="checkbox" id="none" name="user_object" value="None">
                   <label for="none">Mọi đối tượng</label>
                 </div>
                 <div class="col-lg-3">
@@ -253,7 +253,7 @@
               <label for="water_calculate_method">Cách tính giá nước</label>
               <div>
                 <select id="water_calculate_method" name="water_calculate_method">
-                  <option value="m3">Kwh</option>
+                  <option value="m3">m3</option>
                   <option value="Personal">Người/tháng</option>
                   <option value="Negotiate">Thương lượng</option>
                 </select>
@@ -264,11 +264,11 @@
               <label>Nhầ vệ sinh</label>
               <div class="row">
                 <div class="col-lg-6">
-                  <input type="radio" id="common" name="toilet" value="Common">
+                  <input type="radio" id="common" name="is_share_toilet" value="1">
                   <label for="common">Nhà vệ sinh chung</label>
                 </div>
                 <div class="col-lg-6">
-                  <input type="radio" id="private" name="toilet" value="Private">
+                  <input type="radio" id="private" name="is_share_toilet" value="0">
                   <label for="private">Nhà vệ sinh riêng</label>
                 </div>
               </div>
@@ -483,6 +483,32 @@
                     $("#home-number").val(response.id);
                     $("#address").val(response.address);
                     $("#phone").val(response.phone);
+                    $("#price").val(response.price);
+                    $("#area").val(response.area);
+                    $('#electric_price').val(response.electric_price);
+                    let gender = 'input[value="' + response.gender_user + '"]';
+                    $(gender).attr("checked", true);
+                    $("#electric_calculate_method").val(response.electric_calculate_method);
+                    $("#water_price").val(response.water_price);
+                    $("#water_calculate_method").val(response.water_calculate_method);
+                    let is_share_toilet  = 'input[name="is_share_toilet"][value="' + response.is_share_toilet + '"]';
+                    $(is_share_toilet).attr("checked", true);
+                    let is_the_same_condominium = 'input[name="is_the_same_condominium"][value="' + response.is_the_same_condominium + '"]';
+                    $(is_the_same_condominium).attr('checked', true);
+                    let user_objects = response.user_object;
+                    let user_object = user_objects;
+
+                    user_object = 'input[name="user_object"][value="' + user_object + '"]';
+                    //     $(user_object).attr('checked', true);
+                    // for (user_object of user_objects) {
+                    //     alert(user_object);
+                    //     user_object = 'input[name="user_object"][value="' + user_object + '"]';
+                        $(user_object).attr('checked', true);
+                    //     alert(user_object);
+                    // }
+
+
+
 
                 }
 

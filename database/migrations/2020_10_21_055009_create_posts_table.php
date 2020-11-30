@@ -31,7 +31,7 @@ class CreatePostsTable extends Migration
             $table->string('electric_calculate_method')->nullable(false)->comment('Personal - Kwh - Negotiate __ thương lượng');
             $table->decimal('water_price', 10, 3)->nullable(false);
             $table->string('water_calculate_method')->nullable(false)->comment('Personal - m3 - Negotiate __ thương lượng');
-            $table->string('toilet_type')->nullable(true);
+            $table->boolean('is_share_toilet')->nullable(true);
             $table->string('is_the_same_condominium')->nullable(true)->comment('Có chung chủ hay không');
             $table->string('close_time')->comment('Thời gian đóng cửa');
             $table->string('deposit')->comment('Đặt cọc');
