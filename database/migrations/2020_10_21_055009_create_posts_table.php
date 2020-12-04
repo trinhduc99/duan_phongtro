@@ -35,7 +35,7 @@ class CreatePostsTable extends Migration
             $table->string('is_the_same_condominium')->nullable(true)->comment('Có chung chủ hay không');
             $table->string('close_time')->comment('Thời gian đóng cửa');
             $table->string('deposit')->comment('Đặt cọc');
-            $table->string('item')->nullable(true)->comment('Các tiện ích của phòng');
+            $table->string('items')->nullable(true)->comment('Các tiện ích của phòng');
             $table->text('note')->nullable(true)->comment("Ghi chú cho bài viết");
             $table->boolean('is_public')->comment("Người tìm kiếm có thể thấy");
             $table->boolean('is_booked')->default(0);

@@ -57,6 +57,9 @@ Route::prefix('admin')->group(function () {
           'as' => 'admin.post',
           'uses' => 'PostController@adminShowDetailPost'
        ]);
+       Route::patch('approve', [
+           'as' => 'admin.post.approve',
+           'uses' => 'PostController@adminChangeStatusPost']);
     });
     Route::prefix('users')->group(function(){
         Route::get('/user',[
@@ -74,6 +77,7 @@ Route::prefix('admin')->group(function () {
           'uses' => 'PostController@getItems'
        ]);
     });
+
 
 
 });

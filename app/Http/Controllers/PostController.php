@@ -68,6 +68,7 @@ class PostController extends Controller
         $user_id = $post['creator_id'];
         $phone = User::select('phone')->where('id', $user_id)->get();
         $post['phone'] = $phone[0]['phone'];
+        $post['items'] = explode(',', $post['items']);
         return response()->json(['success' => true, $post], 200);
     }
 
@@ -78,6 +79,8 @@ class PostController extends Controller
 
     public function adminShowDetailPost ($id) {
         $post = Post::find($id);
+        $post['items'] = explode(',', $post['items']);
+
         return view('admin.post.index', ['post' => $post]);
     }
 
@@ -440,30 +443,27 @@ class PostController extends Controller
     /*
      * Admin update status post: not test
      */
-    public function changeStatusPost (Request $request)
+    public function adminChangeStatusPost (Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'id' => 'required|bail|integer',
-            'group_user' =>  ['required', 'bail', Rule::in(GroupUser::$GROUP['admin'])],
-            'processor_id' => 'required|bail|integer',
-            'status' => ['required', 'bail', Rule::in(Post::$POST_STATUS['approved'], Post::$POST_STATUS['denied'], Post::$POST_STATUS['violate'])]
+            'post_id' => 'required|bail|integer',
+//            'status' => ['required', 'bail', Rule::in(Post::$POST_STATUS)]
         ]);
         $data = [];
         if ($validator->fails()) {
             return response()->json([
                 'message'=> 'Bad request',
+                'error' => $validator->errors()
             ],400);
         }
-        $conditions = [
-          [
-              ['processor_id', $request['processor_id']],
-              ['status', $request['status']]
-          ]
-        ];
-        $post = Post::where(['id' => $request['id']])->update($conditions);
+
+        $status = $request['status'] ?? 'denied';
+        $post = Post::where('id', $request['post_id'])->update([
+            'status' => Post::$POST_STATUS["$status"]
+        ]);
         $data = $post;
         return response()->json([
-            'message'=> 'Success', 'data' => $data
+            'message'=> 'Success', 'data' => Post::$POST_STATUS["$status"]
         ],200);
     }
 

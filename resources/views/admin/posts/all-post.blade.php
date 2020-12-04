@@ -103,14 +103,71 @@
             <div class="form-group">
               <label for="name" class="col-sm-10">Tên bài viết</label>
               <div class="col-sm-12">
-                <input type="text" class="form-control" id="title" name="title" placeholder="Enter title">
+                <input type="text" class="form-control" id="title" name="title" placeholder="Enter title" disabled>
                 <span id="titleError" class="alert-message"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div>Trạng thái bài viết</div>
+              <div>
+                @if ($post->status == 'Pending')
+                  <button type="button"  name="pending" class="btn btn-info current-status" data-id="{{$post->id}}">Chờ duyệt</button>
+                @endif
+                @if ($post->status == 'Approved')
+                  <button type="button" name="approved" class="btn btn-success" data-id="{{$post->id}}">Đã duyệt</button>
+                @endif
+                @if ($post->status == 'Denied')
+                  <button type="button" name="denied" class="btn btn-danger" data-id="{{$post->id}}">Từ chối</button>
+                @endif
+                @if ($post->status == 'Violate')
+                  <button type="button" name="violate" class="btn btn-warning"  data-id="{{$post->id}}">Vi phạm</button>
+                @endif
+              </div>
+
+            </div>
+            <div class="form-group">
+              <label for="is_booked">Trạng thái phòng</label>
+              <div class="row" id="book">
+                <div class="col-lg-3">Chưa thuê</div>
+                <label class="switch">
+                  <input type="checkbox" name="is_boooked" disabled>
+                  <span class="slider round" id="is_booked"></span>
+                </label>
+                <div class="col-lg-3">Đã thuê</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="in_duration">Hạn bài đăng</label>
+              <div class="row">
+                <div class="col-lg-3">Hết hạn</div>
+                <label class="switch">
+                  <input type="checkbox" name="in_duration" disabled>
+                  <span class="slider round" id="in_duration"></span>
+                </label>
+                <div class="col-lg-3">Gia hạn</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div>
+                <label for="created_at">Ngày tạo bài viết</label><br>
+                <input type="datetime" id="created_at" name="created_at" width="320" disabled/>
+              </div><br>
+              <div>
+                <label for="start_date">Ngày bắt đầu hiển thị</label><br>
+                <input type="datetime" id="start_date" name="start_date" width="320" disabled/>
+              </div><br>
+              <div>
+                <label for="finish_date">Hết ngày hiển thị</label><br>
+                <input type="datetime" id="finish_date" name="finish_date" width="320" disabled/>
               </div>
             </div>
             <div>
               <label for="province"> Tỉnh/Thành phố</label>
               <div>
-                <select id="province" name="province">
+                <select id="province" name="province" disabled>
                   <option value="">-- Chọn Tỉnh/TP --</option>
                   @foreach($provinces as $province)
                     <option value="{{ $province->id }}">{{$province->name}}</option>
@@ -122,7 +179,7 @@
             <div>
               <label for="district"> Quận/Huyện</label>
               <div>
-                <select id="district" name="district">
+                <select id="district" name="district" disabled>
                   <option value="">-- Chọn Quận/Huyện --</option>
                   @foreach($districts as $district)
                     <option value="{{ $district->id }}">{{ $district->name }}</option>
@@ -133,7 +190,7 @@
             <div>
               <label for="ward"> Phường xã</label>
               <div>
-                <select id="ward" name="ward">
+                <select id="ward" name="ward" disabled>
                   <option value=""> --- Chọn phường xã --- </option>
                   @foreach ($wards as $ward)
                     <option value=" {{ $ward->id }}"> {{$ward->name }}</option>
@@ -144,14 +201,14 @@
             <div class="form-group">
               <label for="home-number"> Số nhà</label>
               <div>
-                <input type="text" id="home-number" name="home-number">
+                <input type="text" id="home-number" name="home-number" disabled>
               </div>
             </div>
 
             <div class="form-group">
               <label for="address">Địa chỉ </label>
               <div>
-                <input type="text" id="address" name="address" value="">
+                <input type="text" id="address" name="address" value="" disabled>
               </div>
             </div>
 
@@ -161,7 +218,7 @@
             <div class="form-group">
               <label class="col-sm-10">Mô tả</label>
               <div class="col-sm-12">
-                        <textarea class="form-control" id="description" name="description" placeholder="Enter description" rows="4" cols="50">
+                        <textarea class="form-control" id="description" name="description" placeholder="Enter description" rows="4" cols="50" disabled>
                         </textarea>
                 <span id="descriptionError" class="alert-message"></span>
               </div>
@@ -169,21 +226,21 @@
             <div class="form-group">
               <label for="phone">Liên hệ</label>
               <div class="col-lg-6">
-                  <input type="number" id="phone" name="phone" value="">
+                  <input type="number" id="phone" name="phone" value="" disabled>
               </div>
             </div>
 
             <div class="form-group">
               <label for="price">Giá cho thuê</label>
               <div class="col-lg-8">
-                  <input type="number" id="price" name="price" value="">
+                  <input type="number" id="price" name="price" value="" disabled>
               </div>
             </div>
 
             <div class="form-group">
               <label for="area">Diện tích</label>
               <div class="col-lg-6">
-                <input type="number" id="area" name="area">
+                <input type="number" id="area" name="area" disabled>
               </div>
             </div>
 
@@ -191,15 +248,15 @@
                 <label>Giới tính người thuê</label>
                 <div class="row">
                   <div class="col-lg-4">
-                    <input type="radio" id="none" name="gender" value="None" class="Gender-None">
+                    <input type="radio" id="none" name="gender" value="None" class="Gender-None" disabled>
                     <label for="none">Không bắt buộc</label>
                   </div>
                   <div class="col-lg-4">
-                    <input type="radio" id="male" name="gender" value="Male" class="Gender-Male">
+                    <input type="radio" id="male" name="gender" value="Male" class="Gender-Male" disabled>
                     <label for="male">Nam</label>
                   </div>
                   <div class="col-lg-4">
-                    <input type="radio" id="female" name="gender" value="Female" class="Gender-Female">
+                    <input type="radio" id="female" name="gender" value="Female" class="Gender-Female" disabled>
                     <label for="female">Nữ</label>
                   </div>
                 </div>
@@ -208,19 +265,19 @@
               <label>Đôi tượng thuê nhà</label>
               <div class="row">
                 <div class="col-lg-3">
-                  <input type="checkbox" id="none" name="user_object" value="None">
+                  <input type="checkbox" id="none" name="user_object" value="None" disabled>
                   <label for="none">Mọi đối tượng</label>
                 </div>
                 <div class="col-lg-3">
-                  <input type="checkbox" id="student" name="user_object" value="Student">
+                  <input type="checkbox" id="student" name="user_object" value="Student" disabled>
                   <label for="student">Học sinh/sinh viên</label>
                 </div>
                 <div class="col-lg-3">
-                  <input type="checkbox" id="worker" name="user_object" value="Worker">
+                  <input type="checkbox" id="worker" name="user_object" value="Worker" disabled>
                   <label for="worker">Người đi làm</label>
                 </div>
                 <div class="col-lg-3">
-                  <input type="checkbox" id="family" name="user_object" value="Family">
+                  <input type="checkbox" id="family" name="user_object" value="Family" disabled>
                   <label for="family">Hộ gia đình</label>
                 </div>
               </div>
@@ -229,13 +286,13 @@
             <div class="form-group">
               <label for="electric_price">Giá điện</label>
               <div class="col-lg-6 ">
-                <input type="number" id="electric_price" name="electric_price">
+                <input type="number" id="electric_price" name="electric_price" disabled>
               </div>
             </div>
             <div>
               <label for="electric_calculate_method">Cách tính giá điện</label>
               <div>
-                <select id="electric_calculate_method" name="electric_calculate_method">
+                <select id="electric_calculate_method" name="electric_calculate_method" disabled>
                   <option value="Kwh">Kwh</option>
                   <option value="Personal">Người/tháng</option>
                   <option value="Negotiate">Thương lượng</option>
@@ -246,13 +303,13 @@
             <div class="form-group">
               <label for="water_price">Giá nước</label>
               <div class="col-lg-6 ">
-                <input type="number" id="water_price" name="water_price">
+                <input type="number" id="water_price" name="water_price" disabled>
               </div>
             </div>
             <div>
               <label for="water_calculate_method">Cách tính giá nước</label>
               <div>
-                <select id="water_calculate_method" name="water_calculate_method">
+                <select id="water_calculate_method" name="water_calculate_method" disabled>
                   <option value="m3">m3</option>
                   <option value="Personal">Người/tháng</option>
                   <option value="Negotiate">Thương lượng</option>
@@ -264,11 +321,11 @@
               <label>Nhầ vệ sinh</label>
               <div class="row">
                 <div class="col-lg-6">
-                  <input type="radio" id="common" name="is_share_toilet" value="1">
+                  <input type="radio" id="common" name="is_share_toilet" value="1" disabled>
                   <label for="common">Nhà vệ sinh chung</label>
                 </div>
                 <div class="col-lg-6">
-                  <input type="radio" id="private" name="is_share_toilet" value="0">
+                  <input type="radio" id="private" name="is_share_toilet" value="0" disabled>
                   <label for="private">Nhà vệ sinh riêng</label>
                 </div>
               </div>
@@ -277,11 +334,11 @@
               <label for="is_the_same_condominium">Chung chủ</label>
               <div class="row">
                 <div class="col-lg-6">
-                  <input type="radio" id="is_the_same_condominium" name="is_the_same_condominium" value="1">
+                  <input type="radio" id="is_the_same_condominium" name="is_the_same_condominium" value="1" disabled>
                   <label for="is_the_same_condominium">Có</label>
                 </div>
                 <div class="col-lg-6">
-                  <input type="radio" id="not_is_the_same_condominium" name="is_the_same_condominium" value="0">
+                  <input type="radio" id="not_is_the_same_condominium" name="is_the_same_condominium" value="0" disabled>
                   <label for="not_is_the_same_condominium">Không</label>
                 </div>
               </div>
@@ -290,7 +347,7 @@
             <div class="form-group">
               <label for="close_time">Giờ đóng cửa</label>
               <div>
-                <select name="close_time" id="close_time">
+                <select name="close_time" id="close_time" disabled>
                   <option value="None">Giờ giấc thoải mái</option>
                   <option value="21">21h</option>
                   <option value="22">22h</option>
@@ -303,7 +360,7 @@
             <div class="form-group">
               <label for="deposit">Đặt cọc tiền </label>
               <div>
-                <select id="deposit" name="deposit">
+                <select id="deposit" name="deposit" disabled>
                   <option value="none">Không cần đặt cọc</option>
                   <option value="1">1 tháng</option>
                   <option value="2">2 tháng</option>
@@ -329,7 +386,7 @@
                 <div class="row">
                   @foreach($items as $item)
                     <div class="col-lg-6">
-                      <input type="checkbox" id="{{ $item->key }}" value="{{ $item->key }}">
+                      <input type="checkbox" class="item" id="{{ $item->key }}" value="{{ $item->id }}" disabled>
                       <label for="{{ $item->key }}">{{ $item->name }}</label>
                     </div>
                   @endforeach
@@ -339,66 +396,46 @@
 
             <div class="form-group">
               <label for="note">Ghi chú</label>
-              <textarea id="note" name="note"></textarea>
+              <textarea id="note" name="note" disabled></textarea>
             </div>
 
             <div class="form-group">
-              <label for="is_booked">Trạng thái phòng</label>
-              <div class="row">
-                <div class="col-lg-3">Chưa thuê</div>
-                <label class="switch">
-                  <input type="checkbox" name="is_boooked">
-                  <span class="slider round"></span>
-                </label>
-                <div class="col-lg-3">Đã thuê</div>
-              </div>
-            </div>
+              @if ($post->status == 'Pending')
+                <button type="button" name="denied" class="btn btn-danger" data-id="{{$post->id}}" onclick="deniedPost({{$post->id}})">Từ chối</button>
+                <button type="button" name="approved" class="btn btn-success" data-id="{{$post->id}}" onclick="approvePost()">Duyệt</button>
+                <button type="button" name="violate" class="btn btn-warning" data-id="{{$post->id}}" onclick="violatePost({{ $post->id }})">Vi phạm</button>
 
-            <div class="form-group">
-              <label for="in_duration">Hạn bài đăng</label>
-              <div class="row">
-                <div class="col-lg-3">Hết hạn</div>
-                <label class="switch">
-                  <input type="checkbox" name="is_boooked">
-                  <span class="slider round"></span>
-                </label>
-                <div class="col-lg-3">Gia hạn</div>
-              </div>
-            </div>
+              @endif
+              @if ($post->status == 'Approved')
+                <button type="button" name="denied" class="btn btn-danger" data-id="{{$post->id}}">Từ chối</button>
+                <button type="button" name="violate" class="btn btn-warning" data-id="{{$post->id}}">Vi phạm</button>
+              @endif
+              @if ($post->status == 'Denied')
+                <button type="button" name="approved" class="btn btn-success change-status" data-id="{{$post->id}}" onclick="approvePost(event.target)">Duyệt</button>
+                <button type="button" name="violate" class="btn btn-warning change-status" data-id="{{$post->id}}" onclick="violatePost(event.target)">Vi phạm</button>
+              @endif
+              @if ($post->status == 'Violate')
+                <button type="button" name="approved" class="btn btn-success" data-id="{{$post->id}}">Duyệt</button>
+                <button type="button" name="denied" class="btn btn-danger" data-id="{{$post->id}}">Từ chối</button>
 
-            <div class="form-group">
-              <div>
-                <label for="created_at">Ngày tạo bài viết</label><br>
-                <input type="datetime-local" id="created_at" name="created_at" width="276" />
-              </div><br>
-              <div>
-                <label for="start_date">Ngày bắt đầu hiển thị</label><br>
-                <input type="datetime-local" id="start_date" name="start_date" width="276" />
-              </div><br>
-              <div>
-                <label for="finish_date">Hết ngày hiển thị</label><br>
-                <input type="datetime-local" id="finish_date" name="finish_date" width="276" />
-              </div>
-            </div>
+              @endif
 
-            <div class="form-group">
-              <div >Trạng thái bài viết</div>
-              <div>TRangj thia</div>
 
             </div>
-
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary" onclick="createPost()">Save</button>
         </div>
+
       </div>
+
     </div>
   </div>
 
-  @endsection
 
+@endsection
 <style>
   .switch {
     position: relative;
@@ -463,9 +500,16 @@
   }
 </style>
 <script>
+  let post;
+    // $modal = $('#post-modal');
+    // $modal.find('form')[0].reset();
 
+    $('#post-modal').on('hidden', function(){
+        $(this).find('form')[0].reset();
+    });
 
     function getPost(event) {
+
         var id  = $(event).data("id");
         let _url = `/post/${id}`;
         $.ajax({
@@ -473,7 +517,9 @@
             type: "GET",
             success: function(response) {
                 if(response.success === true) {
+
                     response = response[0];
+                    post = response;
                     $("#post_id").val(response.id);
                     $("#title").val(response.title);
                     $("#description").val(response.description);
@@ -491,6 +537,28 @@
                     $("#electric_calculate_method").val(response.electric_calculate_method);
                     $("#water_price").val(response.water_price);
                     $("#water_calculate_method").val(response.water_calculate_method);
+                    $("#note").val(response.note);
+                    $("#close_time").val(response.close_time);
+                    $("#deposit").val(response.deposit);
+                    $("#is_booked").val(response.is_booked);
+                    $("#created_at").val(response.created_at);
+                    $("#start_date").val(response.start_date);
+                    $("#finish_date").val(response.finish_date);
+                    let items = response.items;
+                    let item;
+                    for (item of items) {
+                        let search = 'input.item[type="checkbox"][value=' + item + ']' ;
+                        $(search).attr('checked', true);
+                    }
+                    if (response.is_booked) {
+                       $('input[type="checkbox"][name="is_booked]').attr("checked", true);
+                       $("#is_booked").click();
+                    }
+                    if (response.in_duration) {
+                        $('input[type="checkbox"][name="in_duration]').attr("checked", true);
+                        $("#in_duration").click();
+                    }
+
                     let is_share_toilet  = 'input[name="is_share_toilet"][value="' + response.is_share_toilet + '"]';
                     $(is_share_toilet).attr("checked", true);
                     let is_the_same_condominium = 'input[name="is_the_same_condominium"][value="' + response.is_the_same_condominium + '"]';
@@ -517,4 +585,39 @@
 
         });
     }
+
+
+    function violatePost(event) {
+      console.log('violate')
+    }
+    
+    function approvePost(event) {
+
+        let id  = $(event).data("id");
+        let currentStatus = post.status;
+
+        $.ajax({
+            data:  {
+                "_token": "{{ csrf_token() }}",
+                'post_id': id,
+                'current_status': currentStatus,
+                'change_status': 'Approved',
+                'status': 'approved'
+
+            },
+            url: '{{route('admin.post.approve')}}',
+            type: 'patch',
+            dataType: "json",
+            success: function (response) {
+              console.log(response);
+
+            },
+            error: function (response) {
+                console.log(response);
+            }
+
+        });
+    }
+    
+
 </script>
