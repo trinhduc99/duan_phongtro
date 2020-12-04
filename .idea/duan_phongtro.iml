@@ -120,5 +120,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="ckeditor" level="application" />
     <orderEntry type="library" name="select2" level="application" />
+    <orderEntry type="library" name="dropzone" level="application" />
   </component>
 </module>

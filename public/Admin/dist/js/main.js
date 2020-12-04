@@ -33,6 +33,5 @@ $(document).ready(function () {
             $("#acc_address").focus();
             $("#acc_address").get(0).setSelectionRange(0, 0);
         }
-
     }
 })

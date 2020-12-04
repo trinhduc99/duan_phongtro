@@ -10,8 +10,59 @@ ul, li {
 li {
     list-style-type: none;
 }
+.select2-selection__choice__display{
+    color: #0f0f0f;
+}
+label.radio-inline.col-md-3 {
+    margin-left: 14px;
+}
+div.input-group.row.price{
+    margin-left: 1px;
+}
+label.col-md-12.price.col-form-label.mb-3 {
+    left: -12px;
+}
+.font__normal {
+    font-weight: normal;
+}
+label.radio-inline.col-md-3.genders {
+    margin-left: -13px;
+}
+table.table.table-bordered {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    border: 2px solid #dee2e6;
+    width: 100%;
+}
 
+table.table.table-bordered td {
+    border: 2px solid #dee2e6;
+    text-align: left;
+    padding: 8px;
+}
+table.table.table-bordered th {
+    border: 2px solid #dee2e6;
+    text-align: left;
+    padding: 8px;
+}
+.right{
+    text-align: right;
+}
+.hidden {
+    display: none;
+}
 
+element.style {
+}
+input#start {
+    height: 35px;
+    border: 2px solid #d2d6de;
+}
+.subpriceday {
+    display: block;
+    font-size: 11px;
+    color: green;
+}
 footer {
     background-color: #0c1a1e;
     min-height: 350px;
