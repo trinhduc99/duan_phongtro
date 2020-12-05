@@ -54,9 +54,33 @@ table.table.table-bordered th {
 
 element.style {
 }
-input#start {
+input#new_start_day {
     height: 35px;
     border: 2px solid #d2d6de;
+}
+.sidenav {
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+.input-group-addon {
+    background-color: #ECF0F5 !important;
+}
+select#acc_electric_calculate_method ,select#acc_water_calculate_method {
+    background-color: #ECF0F5 !important;
+}
+
+section.col-lg-4.right_fixed {
+    position: fixed;
+    right: 0;
+    top: -260px;
+    overflow-x: hidden;
+    z-index: 1;
+    width: 380px;
 }
 .subpriceday {
     display: block;

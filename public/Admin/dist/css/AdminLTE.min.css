@@ -696,7 +696,7 @@ p.text-center.white.text-bold {
 }
 
 .sidebar-form, .sidebar-menu > li.header {
-    overflow: hidden;
+    overflow-x: hidden;
     text-overflow: clip
 }
 

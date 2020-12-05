@@ -29,7 +29,7 @@ Route::prefix('quan-ly')->group(function () {
         'as' => 'profile.create.get-wards-by-districts',
         'uses' => 'ProfileController@getWard',
     ]);
-    Route::post('/get-acc-new/{id}/{id2}/{id3}', [
+    Route::post('/get-acc-new/{id}/{id2}/{id3}/{id4}', [
         'as' => 'profile.create.get-acc-new',
         'uses' => 'ProfileController@getAccNew',
     ]);

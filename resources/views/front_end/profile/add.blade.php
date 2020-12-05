@@ -15,15 +15,12 @@
     <script type="text/javascript">
         Dropzone.options.dropzone =
             {
-                maxFilesize: 10,
-                renameFile: function (file) {
-                    var dt = new Date();
-                    var time = dt.getTime();
-                    return time + file.name;
-                },
+                maxFilesize: 30,
+                uploadMultiple:true,
+                paramName: "file",
                 acceptedFiles: ".jpeg,.jpg,.png,.gif",
                 addRemoveLinks: true,
-                timeout: 60000,
+                timeout: 600,
                 success: function (file, response) {
                     console.log(response);
                 },
@@ -54,11 +51,11 @@
         </ol>
     </section>
     <section class="content ml-5">
-        <form id="form_dangtin" class="ml-10"
+        <form id="form_dangtin" class="ml-12"
               action="{{url('/dang-tin-moi/store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
-                <section class="col-lg-8 connectedSortable">
+                <section class="col-lg-8">
                     <div class="row">
                         <div class="col-md-12">
                             <h3>Địa chỉ cho thuê</h3>
@@ -138,18 +135,6 @@
                     <div class="form-group row mt-5">
                         <div class="col-md-12">
                             <h2>Thông tin mô tả</h2>
-                        </div>
-                    </div>
-                    <div class="form-group row mt-3">
-                        <label for="post_cat" class="col-md-12 col-form-label">Loại chuyên mục</label>
-                        <div class="col-md-6">
-                            <select class="form-control" id="category_id" name="category_id" required
-                                    data-msg-required="Chưa chọn loại chuyên mục">
-                                <option value="">-- Chọn loại tin --</option>
-                                @foreach($categories as  $category)
-                                    <option value="{{$category->id}}">{{$category->name}}</option>
-                                @endforeach
-                            </select>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -463,7 +448,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="row mt-3">
                         <div class="col-md-3 ">
                             <div class="form-group">
@@ -498,7 +482,7 @@
                         <div class="col-md-3 ">
                             <div class="form-group">
                                 <div class="js-package-type js-package-type-day">
-                                    <label class="col-form-label" for="formGroupInputSmall">Số ngày</label>
+                                    <label class="col-form-label number_type" for="formGroupInputSmall">Số ngày</label>
                                     <select class="form-control js-package-type-2" name="acc_new_type_day"
                                             id="js-package-type-day2">
                                         @foreach($acc_new_type_days as $acc_new_type_day)
@@ -513,7 +497,7 @@
                                     </select>
                                 </div>
                                 <div class="js-package-type js-package-type-week hidden">
-                                    <label class="col-form-label" for="formGroupInputSmall">Số tuần</label>
+                                    <label class="col-form-label number_type" for="formGroupInputSmall">Số tuần</label>
                                     <select class="form-control js-package-type-2" name="acc_new_type_week"
                                             id="js-package-type-week2">
                                         @foreach($acc_new_type_weeks as $acc_new_type_week)
@@ -529,7 +513,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group js-package-type js-package-type-month hidden">
-                                    <label class="col-form-label" for="formGroupInputSmall">Số tháng</label>
+                                    <label class="col-form-label number_type" for="formGroupInputSmall">Số tháng</label>
                                     <select class="form-control js-package-type-2" name="acc_new_type_month"
                                             id="js-package-type-month2">
                                         @foreach($acc_new_type_months as $acc_new_type_month)
@@ -549,7 +533,7 @@
                             <div class="form-group">
                                 <div class="">
                                     <label class="col-form-label" for="formGroupInputSmall">Chọn ngày đăng tin</label>
-                                    <input type="date" id="start" name="new_start"
+                                    <input type="date" id="new_start_day" name="new_start_day"
                                            value="{{$day_now}}"
                                            min="2018-01-01" max="2050-01-01">
                                 </div>
@@ -569,10 +553,10 @@
                                 @endphp
                                 Trừ tiền trong tài khoản <b>nhatro</b> (Bạn đang có TK
                                 Chính: {{number_format($user->amount)}}đ)
-                                <p style="color: red;" class="js-note-outofmoney hidden">Số tiền trong tài khoản
+                                <p style="color: red; font-weight: normal" class="js-note-outofmoney">Số tiền trong tài khoản
                                     của bạn không đủ để thực hiện thanh toán, vui lòng <a
-                                        href="#">nạp thêm</a>
-                                    hoặc chọn phương thức khác bên dưới</p>
+                                        href="#">nạp tiền</a>
+                                    tiền vào tài khoản</p>
                             </label>
                         </div>
                     </div>
@@ -584,8 +568,7 @@
                         </div>
                     </div>
                 </section>
-                <section class="col-lg-4 connectedSortable">
-                    <div id="maps" style="width:100%; height:300px; margin-bottom: 30px;"></div>
+                <section class="col-lg-4">
                     <div class="card mb-5"
                          style="color: #856404; background-color: #fff3cd; border-color: #ffeeba;">
                         <div class="card-body">
@@ -611,6 +594,7 @@
                             </ul>
                         </div>
                     </div>
+                    <div id="maps" style="width:100%; height:2247px; margin-bottom: 30px;"></div>
                     <div class="card" style="background-color: #f1f1f1;">
                         <div class="card-body">
                             <h5 class="card-title">Thông tin thanh toán</h5>
@@ -630,20 +614,20 @@
                                 </tr>
                                 <tr>
                                     <td>Đơn giá:</td>
-                                    <td class="js-package-price">{{number_format(2000)}} vnđ /ngày</td>
+                                    <td class="js-package-price"> 2,000 vnd /ngày</td>
                                 </tr>
                                 <tr>
-                                    <td>Số ngày:</td>
+                                    <td class="content_type">Số ngày:</td>
                                     <td class="js-package-days">5</td>
                                 </tr>
                                 <tr>
                                     <td>Ngày hết hạn</td>
-                                    <td class="js-package-deadline">13:51, 29/6/2019</td>
+                                    <td class="js-package-deadline"></td>
                                 </tr>
                                 <tr>
                                     <td style="vertical-class: middle;">Thành tiền:</td>
                                     <td><span style="font-size: 30px; font-weight: bold; color: #F90;"
-                                              class="js-package-grand-total">0đ</span></td>
+                                              class="js-package-grand-total">10,000 vnđ</span></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -651,9 +635,6 @@
                     </div>
                 </section>
             </div>
-            <input type="hidden" id="action" name="action" value="add_new_post"/>
-            <input type="hidden" id="map_lat" name="map_lat" value=""/>
-            <input type="hidden" id="map_long" name="map_long" value=""/>
         </form>
     </section>
 @endsection
