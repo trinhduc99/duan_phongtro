@@ -2,48 +2,31 @@
 @section('title_profile')
     Đăng tin mới
 @endsection
-
 @section('css_profile')
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.0/min/dropzone.min.css">
-
+    <link href="{{asset('Admin/bower_components/drop-image/dist/imageuploadify.min.css')}}" rel="stylesheet"/><br
+        type="_moz">
 @endsection
 @section('js_profile')
     <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.0/dropzone.js"></script>
-    <script type="text/javascript">
-        Dropzone.options.dropzone =
-            {
-                maxFilesize: 30,
-                uploadMultiple:true,
-                paramName: "file",
-                acceptedFiles: ".jpeg,.jpg,.png,.gif",
-                addRemoveLinks: true,
-                timeout: 600,
-                success: function (file, response) {
-                    console.log(response);
-                },
-                error: function (file, response) {
-                    return false;
-                }
-            };
-    </script>
+    <script src="{{asset('Admin/bower_components/drop-image/imageuploadify.js')}}"></script>
+    <script src="{{asset('Admin/bower_components/jquery/validate/jquery.validate.min.js')}}"></script>
     <script>
         CKEDITOR.replace('acc_description');
-
+        $('input[type="file"]').imageuploadify();
     </script>
-    <script src="{{asset('Admin/dist/js/ profile.js')}}"></script>
+    <script src="{{asset('Admin/dist/js/profile.js')}}"></script>
+    <script src="{{asset('Admin/dist/js/validate.js')}}"></script>
     <script src="{{asset('Admin/dist/js/main.js')}}"></script>
 @endsection
 @section('title_profile')
     Đăng tin mới
 @endsection
 @section('contents_profile')
+    <br><br><br>
     <section class="content-header">
-        <h1>
-            Trang chủ
-        </h1>
+        <h1>Trang chủ</h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
             <li class="active">Quản lý</li>
@@ -65,10 +48,9 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="province" class="col-form-label ">Tỉnh/Thành phố</label>
-                                <select id="province" name="province"
-                                        class="form-control js-example-basic-single" required
-                                        data-msg-required="Chưa chọn Tỉnh/TP">
-                                    <option value="">-- Chọn Tỉnh/TP --</option>
+                                <select id="province" name="province" size='1'
+                                        class="form-control js-example-basic-single">
+                                    <option value=''>-- Chọn Tỉnh/TP --</option>
                                     @foreach($provinces as $province)
                                         <option value="{{$province->id}}">{{$province->_name}}</option>
                                     @endforeach
@@ -79,8 +61,7 @@
                             <div class="form-group">
                                 <label class="col-form-label" for="district">Quận/Huyện</label>
                                 <select name="district" id="district"
-                                        class="form-control js-example-basic-single" required
-                                        data-msg-required="Chưa chọn Quận/Huyện">
+                                        class="form-control js-example-basic-single">
                                     <option value="">chọn quận huyện</option>
                                 </select>
                             </div>
@@ -127,8 +108,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="acc_address" class="col-form-label">Địa chỉ chính xác</label>
-                                <input type="text" readonly class="form-control" name="acc_address" id="acc_address"
-                                       required data-msg-required="Chưa chọn khu vực đăng tin">
+                                <input type="text" readonly class="form-control" name="acc_address" id="acc_address">
                             </div>
                         </div>
                     </div>
@@ -140,10 +120,7 @@
                     <div class="form-group row">
                         <label for="acc_title" class="col-md-12 col-form-label">Tiêu đề</label>
                         <div class="col-md-12">
-                            <input type="text" class="form-control" name="acc_title" id="acc_title" value=""
-                                   minlength="30" maxlength="120" required
-                                   data-msg-required="Tiêu đề không được để trống"
-                                   data-msg-minlength="Tiêu đề quá ngắn" data-msg-maxlength="Tiêu đề quá dài">
+                            <input type="text" class="form-control" name="acc_title" id="acc_title">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -154,7 +131,6 @@
                                     $user = \Illuminate\Support\Facades\Auth::user()
                                 @endphp
                                 <input id="phone" type="text" name="phone" class="form-control"
-                                       required data-msg-required="Số điện thoại"
                                        value="{{$user->phone}}">
                             </div>
                         </div>
@@ -163,29 +139,25 @@
                         <label for="acc_price" class="col-md-12 col-form-label">Giá cho thuê</label>
                         <div class="col-md-12">
                             <div class="input-group col-md-6">
-                                <input id="acc_price" name="acc_price" pattern="[0-9.]+" type="text"
-                                       class="form-control" required data-msg-required="Bạn chưa nhập giá phòng"
-                                       data-msg-min="Giá phòng chưa đúng">
+                                <input id="acc_price" name="acc_price" type="text"
+                                       class="form-control">
                                 <span class="input-group-addon">đồng</span>
                             </div>
                             <small class="form-text text-muted">Nhập đầy đủ số, ví dụ 1 triệu thì nhập là
                                 1000000</small>
-                            <div class="alert alert-info mb-5" role="alert">
-                                <p>Hơn 50% người xem tin sẽ không liên lạc khi tin đăng không có giá hoặc giá không
-                                    hợp
+                            <div class="show_money_text"></div>
+                            <div class="alert alert-info mb-5" style="height: auto" role="alert">
+                                <p>Hơn 50% người xem tin sẽ không liên lạc khi tin đăng không có giá hoặc giá không hợp
                                     lý </p>
                             </div>
                         </div>
-                        <label for="acc_price_text" id="acc_price_text"
-                               class="col-sm-12 control-label js-number-text" style="color: red;"></label>
                     </div>
                     <div class="form-group row">
                         <label for="acc_area" class="col-md-12 col-form-label mb-3">Diện tích</label>
                         <div class="col-md-6">
                             <div class="input-group mb-3">
-                                <input id="acc_area" type="text" pattern="[0-9.]+" name="acc_area"
-                                       max="1000" class="form-control" required
-                                       data-msg-required="Bạn chưa nhập diện tích">
+                                <input id="acc_area" type="text" name="acc_area"
+                                       class="form-control">
                                 <span class="input-group-addon">m<sup>2</sup></span>
                             </div>
                         </div>
@@ -206,8 +178,7 @@
                     <div class="form-group row mt-3">
                         <label for="acc_close_time" class="col-md-12 col-form-label">Giờ đóng cửa</label>
                         <div class="col-md-4">
-                            <select class="form-control" id="acc_close_time" name="acc_close_time" required
-                                    data-msg-required="Chưa chọn loại chuyên mục">
+                            <select class="form-control" id="acc_close_time" name="acc_close_time">
                                 @foreach($acc_close_times as $acc_close_time)
                                     <option value="{{$acc_close_time['id']}}">{{$acc_close_time['name']}}</option>
                                 @endforeach
@@ -219,15 +190,13 @@
                             <label for="acc_electric_price" class="col-md-12 price col-form-label mb-3">Giá
                                 điện</label>
                             <div class="input-group row price">
-                                <input id="acc_electric_price" type="number" pattern="[0-9.]+"
+                                <input id="acc_electric_price" type="text"
                                        name="acc_electric_price"
-                                       class="form-control col-md-6" required
-                                       data-msg-required="Bạn chưa nhập giá điện ">
+                                       class="form-control col-md-6">
                                 <span class="input-group-addon"
                                       style="width:0px; padding-left:0px; padding-right:0px; border:none;"></span>
                                 <select class="form-control col-md-6" id="acc_electric_calculate_method"
-                                        name="acc_electric_calculate_method" required
-                                        data-msg-required="Chưa chọn loại chuyên mục">
+                                        name="acc_electric_calculate_method">
                                     @foreach($acc_electric_calculate_methods as $acc_electric_calculate_method)
                                         <option
                                             value="{{$acc_electric_calculate_method['id']}}">{{$acc_electric_calculate_method['name']}}</option>
@@ -238,14 +207,12 @@
                         <div class="col-md-6">
                             <label for="acc_water_price" class="col-md-12 col-form-label price mb-3">Giá nước</label>
                             <div class="input-group mb-4">
-                                <input id="acc_water_price" type="text" pattern="[0-9.]+" name="acc_water_price"
-                                       max="1000" class="form-control" required
-                                       data-msg-required="Bạn chưa nhập giá">
+                                <input id="acc_water_price" type="text" name="acc_water_price"
+                                       class="form-control">
                                 <span class="input-group-addon"
-                                      style="width:0px; padding-left:0px; padding-right:0px; border:none;"></span>
+                                      style="width:0; padding-left:0; padding-right:0; border:none;"></span>
                                 <select class="form-control" id="acc_water_calculate_method"
-                                        name="acc_water_calculate_method" required
-                                        data-msg-required="Chưa chọn loại chuyên mục">
+                                        name="acc_water_calculate_method">
                                     @foreach($acc_water_calculate_methods as $acc_water_calculate_method)
                                         <option
                                             value="{{$acc_water_calculate_method['id']}}">{{$acc_water_calculate_method['name']}}</option>
@@ -258,24 +225,19 @@
                         <label for="acc_internet_price" class="col-md-12 col-form-label">Giá internet</label>
                         <div class="col-md-12">
                             <div class="input-group col-md-6">
-                                <input id="acc_internet_price" name="acc_internet_price" pattern="[0-9.]+"
-                                       type="text"
-                                       class="form-control" required data-msg-required="Bạn chưa nhập giá phòng"
-                                       data-msg-min="Giá phòng chưa đúng">
+                                <input id="acc_internet_price" name="acc_internet_price"
+                                       type="text" class="form-control">
                                 <span class="input-group-addon">đồng</span>
                             </div>
                             <small class="form-text text-muted">Nhập đầy đủ số, ví dụ 1 triệu thì nhập là
                                 1000000</small>
+                            <div class="money_text_internet"></div>
                         </div>
-                        <label for="acc_internet_price" id="acc_internet_price_text"
-                               class="col-sm-12 control-label js-number-text" style="color: red;"></label>
                     </div>
                     <div class="form-group row mt-3">
                         <label for="acc_deposit_price" class="col-md-12 col-form-label">Yêu cầu đặt cọc</label>
                         <div class="col-md-6">
-                            <select class="form-control" id="acc_deposit_price" name="acc_deposit_price"
-                                    required
-                                    data-msg-required="Chưa chọn loại chuyên mục">
+                            <select class="form-control" id="acc_deposit_price" name="acc_deposit_price">
                                 @foreach($acc_deposit_prices as $acc_deposit_price)
                                     <option
                                         value="{{$acc_deposit_price['id']}}">{{$acc_deposit_price['name']}}</option>
@@ -286,15 +248,13 @@
                     <div class="form-group row">
                         <div class="col-md-12 col-sm-12">
                             <div class="form-group checkbox_group">
-                                <label class="col-md-12 col-form-label price left mb-3" for="acc_user_gender">Giới
-                                    tính khách
-                                    thuê:</label>
+                                <label class="col-md-12 col-form-label price left mb-3" for="acc_user_gender">
+                                    Giới tính khách thuê:</label>
                                 <div class="col-sm-12">
                                     @foreach($acc_user_genders as $acc_user_gender)
                                         <label class="radio-inline col-md-3 genders">
                                             <input type="radio" name="acc_user_gender"
-                                                   class="css-checkbox" value="{{$acc_user_gender['id']}}"
-                                                   checked/>
+                                                   class="css-checkbox" value="{{$acc_user_gender['id']}}">
                                             <label for="acc_user_gender"
                                                    class="font__normal">{{$acc_user_gender['name']}}</label>
                                         </label>
@@ -302,8 +262,8 @@
                                 </div>
                             </div>
                             <div class="form-group checkbox_group">
-                                <label class="col-md-12 col-form-label price left mb-3" for="">Đối tượng khách mà bạn
-                                    muốn cho thuê:</label>
+                                <label class="col-md-12 col-form-label price left mb-3" for="">
+                                    Đối tượng khách mà bạn muốn cho thuê:</label>
                                 <div class="row">
                                     @foreach( $acc_user_objects as $acc_user_object)
                                         <div class="col-md-3 col-sm-6">
@@ -312,8 +272,7 @@
                                                        value="{{$acc_user_object['id']}}"
                                                        class="css-checkbox lrg"
                                                        multiple>
-                                                <label for="nguoi_di_lam"
-                                                       class="font__normal">{{$acc_user_object['name']}}</label>
+                                                <label for="" class="font__normal">{{$acc_user_object['name']}}</label>
                                             </label>
                                         </div>
                                     @endforeach
@@ -349,19 +308,15 @@
                     <div class="form-group row">
                         <div class="col-md-12">
                             <p>Hình ảnh rõ ràng sẽ được lựa chọn nhanh hơn</p>
-                            <div class="form-group">
-                                <div class="dropzone" id="dropzone">
-
-                                </div>
-                            </div>
+                            {{--                            <div class="form-group">--}}
+                            {{--                                <input type="file" accept="image/*" multiple name="acc_image[]">--}}
+                            {{--                            </div>--}}
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="post_content" class="col-md-12 col-form-label">Nội dung mô tả</label>
                         <div class="col-md-12">
-                                    <textarea class="form-control" name="acc_description" required
-                                              minlength="100" data-msg-required="Bạn chưa nhập nội dung"
-                                              data-msg-minlength="Nội dung tối thiểu 100 kí tự"></textarea>
+                            <textarea class="form-control" name="acc_description"></textarea>
                         </div>
                     </div>
                     <div class="form-group row mt-5">
@@ -452,8 +407,7 @@
                         <div class="col-md-3 ">
                             <div class="form-group">
                                 <label for="post_package" class="col-form-label">Chọn loại tin</label>
-                                <select class="form-control" id="acc_new" name="acc_new" required
-                                        data-msg-required="Chưa chọn gói tin">
+                                <select class="form-control" id="acc_new" name="acc_new">
                                     @foreach($acc_news as $acc_new)
                                         @if($acc_new['id'] == 1)
                                             <option value={{$acc_new['id']}} selected>{{$acc_new['name']}}</option>
@@ -482,7 +436,7 @@
                         <div class="col-md-3 ">
                             <div class="form-group">
                                 <div class="js-package-type js-package-type-day">
-                                    <label class="col-form-label number_type" for="formGroupInputSmall">Số ngày</label>
+                                    <label class="col-form-label number_type" for="">Số ngày</label>
                                     <select class="form-control js-package-type-2" name="acc_new_type_day"
                                             id="js-package-type-day2">
                                         @foreach($acc_new_type_days as $acc_new_type_day)
@@ -497,7 +451,7 @@
                                     </select>
                                 </div>
                                 <div class="js-package-type js-package-type-week hidden">
-                                    <label class="col-form-label number_type" for="formGroupInputSmall">Số tuần</label>
+                                    <label class="col-form-label number_type">Số tuần</label>
                                     <select class="form-control js-package-type-2" name="acc_new_type_week"
                                             id="js-package-type-week2">
                                         @foreach($acc_new_type_weeks as $acc_new_type_week)
@@ -513,7 +467,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group js-package-type js-package-type-month hidden">
-                                    <label class="col-form-label number_type" for="formGroupInputSmall">Số tháng</label>
+                                    <label class="col-form-label number_type">Số tháng</label>
                                     <select class="form-control js-package-type-2" name="acc_new_type_month"
                                             id="js-package-type-month2">
                                         @foreach($acc_new_type_months as $acc_new_type_month)
@@ -540,25 +494,21 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-title payment">
-                        Chọn phương thức thanh toán
+                    <div class="form-group">
+                        <label for="post_package" class="col-form-label">Phương thức thanh toán
+                        </label>
                     </div>
-                    <div class="form-group payment_method_group">
-                        <div class="form-check js-payment-item js-payment-account">
-                            <input type="radio" name="payment_method" id="payment_from_account" value="account"
-                                   checked="checked" class="form-check-input">
-                            <label for="payment_from_account" class="form-check-label">
-                                @php
-                                    $user = \Illuminate\Support\Facades\Auth::user();
-                                @endphp
-                                Trừ tiền trong tài khoản <b>nhatro</b> (Bạn đang có TK
-                                Chính: {{number_format($user->amount)}}đ)
-                                <p style="color: red; font-weight: normal" class="js-note-outofmoney">Số tiền trong tài khoản
-                                    của bạn không đủ để thực hiện thanh toán, vui lòng <a
-                                        href="#">nạp tiền</a>
-                                    tiền vào tài khoản</p>
-                            </label>
-                        </div>
+                    <div>
+                        @php
+                            $user = \Illuminate\Support\Facades\Auth::user();
+                        @endphp
+                        Trừ tiền trong tài khoản <b>nhatro.com</b> (Bạn đang có TK
+                        Chính: {{number_format($user->amount)}} vnđ)
+                        <p style="color: red; font-weight: normal" class="js-note-outofmoney hidden">Số tiền
+                            trong tài khoản
+                            của bạn không đủ để thực hiện thanh toán, vui lòng <a
+                                href="#">nạp tiền</a>
+                            tiền vào tài khoản</p>
                     </div>
                     <div class="form-group row mt-5">
                         <div class="col-md-12">

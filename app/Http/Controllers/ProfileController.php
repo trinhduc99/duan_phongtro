@@ -84,7 +84,7 @@ class ProfileController extends Controller
     public function getAccNew($id, $id2, $id3, $id4): \Illuminate\Http\JsonResponse
     {
         $acc_news = Accommondation::ACC_NEW;
-
+        $user_amount = Auth::user()->amount;
         foreach ($acc_news as $acc_new) {
             if ($id == $acc_new['id']) {
                 $acc_news = $acc_new;
@@ -92,24 +92,28 @@ class ProfileController extends Controller
         }
         if ($id2 == 'day') {
             $price = number_format($acc_news['count_day']).' vnd/ ngày';
-            $price_total = number_format($acc_news['count_day']*$id3).' vnđ';
+            $price_total = number_format($acc_news['count_day']*$id3).' vnd';
+            $price_count = $acc_news['count_day']*$id3;
             $content = "Số ngày: ";
             $date = Carbon::createFromFormat('Y-m-d', $id4);
             $date->addDay($id3)->toFormattedDateString();
         } else if ($id2 == 'week') {
             $price = number_format($acc_news['count_week'])." vnd/ tuần";
             $price_total = number_format($acc_news['count_week']*$id3).' vnđ';
+            $price_count = $acc_news['count_week']*$id3;
             $content = "Số tuần: ";
             $date = Carbon::createFromFormat('Y-m-d', $id4);
             $date->addWeek($id3)->toFormattedDateString();
         } else {
             $price = number_format($acc_news['count_month'])." vnd/ tháng";
-            $price_total = number_format($acc_news['count_week']*$id3)." vnđ";
+            $price_total = number_format($acc_news['count_month']*$id3).' vnđ';
+            $price_count = $acc_news['count_month']*$id3;
             $content = "Số tháng: ";
             $date = Carbon::createFromFormat('Y-m-d', $id4);
             $date->addMonth($id3)->toFormattedDateString();
         }
-        return response()->json([$price, $price_total,$id3,$content,$date]);
+        $check =$user_amount >$price_count;
+        return response()->json([$price, $price_total,$id3,$content,$date,$check]);
 
     }
 
