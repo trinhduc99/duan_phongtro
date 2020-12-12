@@ -1,11 +1,8 @@
 @php
     $user = \Illuminate\Support\Facades\Auth::user();
 @endphp
-<header class="main-header">
-    <a href="{{url('/')}}" class="logo">
-        <span class="logo-lg">Nhatro.com</span>
-    </a>
-    <nav class="navbar navbar-static-top">
+<header class="main-header ">
+    <nav class="navbar navbar-static-top navbar-fixed-top">
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
             <span class="sr-only">nhatro.com</span>
         </a>

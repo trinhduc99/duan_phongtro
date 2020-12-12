@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Accommondation;
 use Carbon\Carbon;
+use DateTime;
+use DateTimeZone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -43,7 +45,7 @@ class ProfileController extends Controller
         $acc_new_type_weeks = Accommondation::ACC_NEW_TYPE_WEEK;
         $acc_new_type_months = Accommondation::ACC_NEW_TYPE_MONTH;
         $acc_new_types = Accommondation::ACC_NEW_TYPE;
-        $day_now = Carbon::now()->format('Y-d-m');
+        $day_now = Carbon::now()->format('Y-m-d');
         return view('front_end.profile.add', compact('categories',
             'provinces', 'acc_type_toilets', 'items',
             'acc_close_times', 'acc_deposit_prices',
@@ -71,7 +73,7 @@ class ProfileController extends Controller
         return response()->json($districts);
     }
 
-    public function getWard($id, $id2)
+    public function getWard($id, $id2): \Illuminate\Http\JsonResponse
     {
         $wards = DB::table('ward')->where('_district_id', $id)->where('_province_id', $id2)->get(['_name', 'id']);
         $streets = DB::table('street')->where('_district_id', $id)->where('_province_id', $id2)->get(['_name', 'id']);
@@ -79,22 +81,35 @@ class ProfileController extends Controller
         return response()->json([$wards, $streets, $projects]);
     }
 
-    public function getAccNew($id, $id2, $id3)
+    public function getAccNew($id, $id2, $id3, $id4): \Illuminate\Http\JsonResponse
     {
         $acc_news = Accommondation::ACC_NEW;
+
         foreach ($acc_news as $acc_new) {
             if ($id == $acc_new['id']) {
                 $acc_news = $acc_new;
             }
         }
         if ($id2 == 'day') {
-            $price = $acc_news['count_day'] * $id3;
+            $price = number_format($acc_news['count_day']).' vnd/ ngày';
+            $price_total = number_format($acc_news['count_day']*$id3).' vnđ';
+            $content = "Số ngày: ";
+            $date = Carbon::createFromFormat('Y-m-d', $id4);
+            $date->addDay($id3)->toFormattedDateString();
         } else if ($id2 == 'week') {
-            $price = $acc_news['count_week'] * $id3;
+            $price = number_format($acc_news['count_week'])." vnd/ tuần";
+            $price_total = number_format($acc_news['count_week']*$id3).' vnđ';
+            $content = "Số tuần: ";
+            $date = Carbon::createFromFormat('Y-m-d', $id4);
+            $date->addWeek($id3)->toFormattedDateString();
         } else {
-            $price = $acc_news['count_month'] * $id3;
+            $price = number_format($acc_news['count_month'])." vnd/ tháng";
+            $price_total = number_format($acc_news['count_week']*$id3)." vnđ";
+            $content = "Số tháng: ";
+            $date = Carbon::createFromFormat('Y-m-d', $id4);
+            $date->addMonth($id3)->toFormattedDateString();
         }
-        return response()->json($price);
+        return response()->json([$price, $price_total,$id3,$content,$date]);
 
     }
 
