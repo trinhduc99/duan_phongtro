@@ -21,7 +21,8 @@
         "laravel/framework": "^7.24",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.4",
-        "spatie/laravel-medialibrary": "^7.0.0"
+        "spatie/laravel-medialibrary": "^7.0.0",
+        "laravel/passport": "^9.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
