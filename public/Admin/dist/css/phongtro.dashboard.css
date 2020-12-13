@@ -1,0 +1,236 @@
+.container.support--box {
+    margin: 30px 0 30px 0;
+}
+
+ul, li {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style-type: none;
+}
+.select2-selection__choice__display{
+    color: #0f0f0f;
+}
+label.radio-inline.col-md-3 {
+    margin-left: 14px;
+}
+div.input-group.row.price{
+    margin-left: 1px;
+}
+label.col-md-12.price.col-form-label.mb-3 {
+    left: -12px;
+}
+.font__normal {
+    font-weight: normal;
+}
+label.radio-inline.col-md-3.genders {
+    margin-left: -13px;
+}
+table.table.table-bordered {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    border: 2px solid #dee2e6;
+    width: 100%;
+}
+
+table.table.table-bordered td {
+    border: 2px solid #dee2e6;
+    text-align: left;
+    padding: 8px;
+}
+table.table.table-bordered th {
+    border: 2px solid #dee2e6;
+    text-align: left;
+    padding: 8px;
+}
+.right{
+    text-align: right;
+}
+.hidden {
+    display: none;
+}
+
+element.style {
+}
+input#new_start_day {
+    height: 35px;
+    border: 2px solid #d2d6de;
+}
+.sidenav {
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+.input-group-addon {
+    background-color: #ECF0F5 !important;
+}
+select#acc_electric_calculate_method ,select#acc_water_calculate_method {
+    background-color: #ECF0F5 !important;
+}
+
+section.col-lg-4.right_fixed {
+    position: fixed;
+    right: 0;
+    top: -260px;
+    overflow-x: hidden;
+    z-index: 1;
+    width: 380px;
+}
+.subpriceday {
+    display: block;
+    font-size: 11px;
+    color: green;
+}
+footer {
+    background-color: #0c1a1e;
+    min-height: 350px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.footer-col {
+    margin-top: 50px;
+}
+
+.logofooter {
+    margin-bottom: 10px;
+    font-size: 25px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.footer-col p {
+    color: #fff;
+    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 15px;
+}
+
+.footer-col p i {
+    width: 20px;
+    color: #999;
+}
+
+.color--back {
+    color: black !important;
+}
+
+.footer-ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 2px;
+}
+
+.footer-ul li {
+    line-height: 29px;
+    font-size: 12px;
+}
+.logo--img{
+    width: 240px;
+    height: 140px;
+    margin: 30px 0 20px 0;
+}
+
+.footer-ul li a {
+    color: #262a2b;
+    transition: color 0.2s linear 0s, background 0.2s linear 0s;
+}
+
+.footer-ul i {
+    margin-right: 10px;
+}
+
+.footer-ul li a:hover {
+    transition: color 0.2s linear 0s, background 0.2s linear 0s;
+    color: #ff670f;
+}
+
+.copyright {
+    min-height: 40px;
+    background-color: #000000;
+}
+
+.copyright p {
+    text-align: left;
+    color: #FFF;
+    padding: 10px 0;
+    margin-bottom: 0;
+}
+
+.heading7 {
+    font-size: 21px;
+    font-weight: 700;
+    color: #d9d6d6;
+    margin-bottom: 22px;
+}
+
+.post p {
+    font-size: 12px;
+    color: #FFF;
+    line-height: 20px;
+}
+
+.post p span {
+    display: block;
+    color: #8f8f8f;
+}
+
+.bottom_ul {
+    list-style-type: none;
+    float: right;
+    margin-bottom: 0;
+}
+
+.bottom_ul li {
+    float: left;
+    line-height: 40px;
+}
+
+.bottom_ul li:after {
+    content: "/";
+    color: #FFF;
+    margin-right: 8px;
+    margin-left: 8px;
+}
+
+.bottom_ul li a {
+    color: #FFF;
+    font-size: 12px;
+}
+
+.social-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+    background-color: blue;
+    color: #fff;
+    text-align: center;
+    margin-right: 10px;
+    padding-top: 7px;
+    border-radius: 50%;
+}
+
+.footer-social li {
+    float: left;
+}
+
+.linked-in {
+    background-color: #007bb6;
+}
+
+.facebook {
+    background-color: #3b5998;
+}
+
+.twitter {
+    background-color: #1da1f2;
+}
+
+.google {
+    background-color: #f63e28;
+}

@@ -22,7 +22,6 @@
 </head>
 <body class="dashboard">
 <div id="webpage">
-    @include('partials_profile.header')
     <div class="container-fluid">
         <div class="row">
             <main role="main" class="ml-sm-auto col-lg-12">
@@ -75,19 +74,12 @@
                     </form>
                     <br>
                 </div>
-
-                @include('partials_profile.support_box')
                 @include('partials_profile.footer')
             </main>
         </div>
     </div>
-    @include('partials_profile.bottom_bar')
 </div>
-<script src="{{asset('profile/js/main-dashboard.min.js')}}"></script>
-<script src="{{asset('profile/js/google_map.js')}}"></script>
-<script src="{{asset('profile/js/phongtro123.post.js')}}"></script>
-<script src="{{asset('profile/js/3rd/feather.min.js')}}"></script>
-<script src="{{asset('profile/js/main.js')}}"></script>
+
 @yield('js_profile')
 </body>
 </html>
