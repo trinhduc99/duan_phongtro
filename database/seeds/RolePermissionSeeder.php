@@ -23,12 +23,12 @@ class RolePermissionSeeder extends Seeder
         $permission = Permission::create(
             /* Group Post*/
             ['name' => 'search post'], // every one
-            ['name' => 'create post'] , // user
-            ['name' => 'update post content'], // 'user' update when pending
+            ['name' => 'create post'] , // users
+            ['name' => 'update post content'], // 'users' update when pending
             ['name' => 'update post status'], // admin update when pending
-            ['name' => 'delete post'], // 'user'
+            ['name' => 'delete post'], // 'users'
 
-            ['name' => 'management post'], // user
+            ['name' => 'management post'], // users
             ['name' => 'admin management post'], // admin
             /* Group service */
             [],

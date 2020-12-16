@@ -42,13 +42,46 @@ class PostController extends Controller
     }
 
     public function adminShowAllPost () {
-        $posts = Post::get();
-        return view('admin.posts.all-post', ['posts' => $posts]);
+
+        $posts = Post::limit(10)->get();
+        $provinces = new ProvinceController();
+        $districts = new DistrictController();
+        $wards = new WardController();
+        $items = new ItemsController();
+        $provinces = $provinces->getAllProvince();
+        $districts = $districts->getAllDistrict();
+        $wards = $wards->getAllWard();
+        $items = $items->getAllItem();
+
+        return view('admin.posts.all-post', [
+            'posts' => $posts,
+            'provinces' => $provinces,
+            'districts' => $districts,
+            'wards' => $wards,
+            'items' => $items
+
+        ]);
     }
 
     public function getPost ($id) {
         $post = Post::find($id);
+        $user_id = $post['creator_id'];
+        $phone = User::select('phone')->where('id', $user_id)->get();
+        $post['phone'] = $phone[0]['phone'];
+        $post['items'] = explode(',', $post['items']);
         return response()->json(['success' => true, $post], 200);
+    }
+
+    public function adminShowApprovedPost () {
+        $posts = Post::where('status', Post::$POST_STATUS['approved'])->get();
+        return view('admin.posts.approved-post', ['posts' => $posts]);
+    }
+
+    public function adminShowDetailPost ($id) {
+        $post = Post::find($id);
+        $post['items'] = explode(',', $post['items']);
+
+        return view('admin.post.index', ['post' => $post]);
     }
 
     public function adminShowPendingPost () {
@@ -66,6 +99,20 @@ class PostController extends Controller
         return view('admin.posts.violate-post', ['posts' => $posts]);
     }
 
+    public function getUserPosts (Request $request) {
+        $creator_id = 11;
+        $post = Post::where('creator_id', $creator_id)->get();
+
+        $provinces = new ProvinceController();
+        $provinces = $provinces->getAllProvince();
+
+        return view('pages.post.index', ['posts' => $post, 'provinces' => $provinces]);
+    }
+
+    public function getItems () {
+        $items = Post::$MOTEL_ITEM;
+        return view('admin.others.items', ['items' => $items]);
+    }
     /*
      *  Search post
     */
@@ -396,30 +443,27 @@ class PostController extends Controller
     /*
      * Admin update status post: not test
      */
-    public function changeStatusPost (Request $request)
+    public function adminChangeStatusPost (Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'id' => 'required|bail|integer',
-            'group_user' =>  ['required', 'bail', Rule::in(GroupUser::$GROUP['admin'])],
-            'processor_id' => 'required|bail|integer',
-            'status' => ['required', 'bail', Rule::in(Post::$POST_STATUS['approved'], Post::$POST_STATUS['denied'], Post::$POST_STATUS['violate'])]
+            'post_id' => 'required|bail|integer',
+//            'status' => ['required', 'bail', Rule::in(Post::$POST_STATUS)]
         ]);
         $data = [];
         if ($validator->fails()) {
             return response()->json([
                 'message'=> 'Bad request',
+                'error' => $validator->errors()
             ],400);
         }
-        $conditions = [
-          [
-              ['processor_id', $request['processor_id']],
-              ['status', $request['status']]
-          ]
-        ];
-        $post = Post::where(['id' => $request['id']])->update($conditions);
+
+        $status = $request['status'] ?? 'denied';
+        $post = Post::where('id', $request['post_id'])->update([
+            'status' => Post::$POST_STATUS["$status"]
+        ]);
         $data = $post;
         return response()->json([
-            'message'=> 'Success', 'data' => $data
+            'message'=> 'Success', 'data' => Post::$POST_STATUS["$status"]
         ],200);
     }
 

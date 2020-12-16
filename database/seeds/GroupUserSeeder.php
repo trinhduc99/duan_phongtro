@@ -13,7 +13,7 @@ class GroupUserSeeder extends Seeder
     {
         DB::table('group_users')->insert([
             ['name' => 'Admin', 'group_name' => 'admin'],
-            ['name' => 'User', 'group_name' => 'user']
+            ['name' => 'User', 'group_name' => 'users']
         ]);
         DB::table('users')->insert([
             ['name' => 'Admin', 'group_id' => '1', 'phone' => '0234123234', 'amount' => rand(100, 10000000)],

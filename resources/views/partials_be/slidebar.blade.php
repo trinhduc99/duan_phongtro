@@ -28,7 +28,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link ">
+                            <a href="{{ route('admin.users.user') }}" class="nav-link ">
                                 <i class="fa-fw fas fa-users">
                                 </i>
                                 <p>
@@ -37,7 +37,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link ">
+                            <a href="{{route("admin.users.admin")}}" class="nav-link ">
                                 <i class="fa-fw fas fa-users"></i>
                                 <p>
                                     <span>Tài khoản Admin</span>
@@ -77,7 +77,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{ route('admin.posts.all-post') }}" class="nav-link">
 
                                 <i class="nav-icon fas fa-portrait"></i>
                                 <p>
@@ -86,7 +86,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link ">
+                            <a href="{{route('admin.posts.pending-post')}}" class="nav-link ">
                                 <i class="nav-icon fas fa-portrait">
                                 </i>
                                 <p>
@@ -95,7 +95,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link ">
+                            <a href="{{ route('admin.posts.approved-post') }}" class="nav-link ">
                                 <i class="nav-icon fas fa-portrait">
                                 </i>
                                 <p>
@@ -104,7 +104,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link ">
+                            <a href="{{ route('admin.posts.denied-post') }}" class="nav-link ">
                                 <i class="nav-icon fas fa-portrait">
                                 </i>
                                 <p>
@@ -113,7 +113,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link ">
+                            <a href="{{ route('admin.posts.violate-post') }}" class="nav-link ">
                                 <i class="nav-icon fas fa-portrait">
                                 </i>
                                 <p>
@@ -134,7 +134,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href=" {{ route('admin.others.item') }}" class="nav-link">
                                 <i class="nav-icon fas fa-address-book"></i>
                                 <p>
                                     Danh sách lợi thế

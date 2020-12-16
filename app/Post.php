@@ -26,7 +26,8 @@ class Post extends Model
     public static $USER_OBJECT = [
        'none' => 'None',
        'student' => 'Student',
-       'worker' => 'Worker'
+       'worker' => 'Worker',
+        'family' => 'Family'
     ];
 
     public static $WATER_CALCULATE_METHOD = [
@@ -66,24 +67,95 @@ class Post extends Model
         ]
     ];
 
+    public static $IS_SHARE_TOILET = [
+      'yes' => 1, 'no' => 0
+    ];
+
     public static $NUMBER_RECORD_FAKE = 200;
     public static $MOTEL_ITEM = [
         // điều hòa, nóng lạnh,
         // vệ sinh khép kín, chung chủ/không chung chủ, bếp : description
-        ['' => ['', 'Điều hòa']],
-        ['' => ['', 'Bình nóng lạnh']],
-        ['' => ['', 'Ban công']],
-        ['' => ['', 'Tủ lạnh']],
-        ['' => ['', 'Máy giặt']],
-        ['' => ['', 'Giường']],
-        ['' => ['', 'Quạt trần']],
-        ['' => ['', 'Quạt treo tường']],
-        ['' => ['', 'Giường']],
-        ['' => ['', 'Tủ đựng quần áo']],
-        ['' => ['', 'Bàn học']],
-        ['' => ['', 'Ghế']],
-        ['' => ['', 'Bàn học']],
-        ['' => ['', 'Đèn học']],
+        [
+            'key' => 'loft',
+            'value' => 'Gác xép'
+        ],
+        [
+            'key' => 'window',
+            'value' => 'Cửa sổ'
+        ],
+        [
+            'key' => 'camera',
+            'value' => 'Camera'
+        ],
+        [
+            'key' => 'washing_machine',
+            'value' => 'Máy giặt'
+        ],
+        [
+            'key' => 'air_conditioner',
+            'value' => 'Điều hòa'
+        ],
+        [
+            'key' => 'fridge',
+            'value' => 'Tủ lạnh'
+        ],
+        [
+            'key' => 'television',
+            'value' => 'Ti vi'
+        ],
+        [
+            'key' => 'heater',
+            'value' => 'Bình nước nóng'
+        ],
+        [
+            'key' => 'berth',
+            'value' => 'Giường ngủ'
+        ],
+        [
+            'key' => 'mattress',
+            'value' => 'Có đệm'
+        ],
+        [
+            'key' => 'kitchen',
+            'value' => 'Chỗ nấu nướng'
+        ],
+        [
+            'key' => 'desk',
+            'value' => 'Bàn làm việc'
+        ],
+        [
+            'key' => 'closet',
+            'value' => 'Tủ quần áo'
+        ],
+        [
+            'key' => 'floor',
+            'value' => 'Sàn gỗ'
+        ],
+        [
+            'key' => 'balcony',
+            'value' => 'Ban công'
+        ],
+        [
+            'key' => 'san_phoi',
+            'value' => 'Sân phơi'
+        ],
+        [
+            'key' => 'don_ve_sinh',
+            'value' => 'Dọn vệ sinh hàng tuần'
+        ],
+        [
+            'key' => 'parking_area',
+            'value' => 'Chỗ để xe'
+        ],
+        [
+            'key' => 'gym',
+            'value' => 'Gần phòng Gym'
+        ],
+        [
+            'key' => 'fan',
+            'value' => 'Quạt'
+        ],
+
 
     ];
     public function scopeSearchPost ($query, $arrSearch)
