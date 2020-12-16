@@ -1,9 +1,12 @@
 <p>Huong dan chay du an</p>
 <p>git clone</p>
 <p>composer install</p>
+<p>composer require kjmtrue/vietnam-zone<p>
+<p>php artisan vendor:publish --provider="Kjmtrue\VietnamZone\ServiceProvider"<p>
 <p>php artisan migrate</p>
 <p>php artisan vietnamzone:download</p>
-
+<p>composer require yajra/laravel-datatables-oracle<p>
+   
 + composer require laravel/ui:^2.4
 + php artisan ui vue --auth
 + npm install && npm run dev
@@ -18,8 +21,8 @@
 ### Màn hình 
 Chung: 
 Post: Truowng dai hoc
-Service Type
-Day - Week - Month
+Service Type: Done
+Day - Week - Month: Done
 
 
 Frontend 
@@ -27,7 +30,7 @@ Frontend
  
 - Nội dung mô tả cho xuống cuối cùng trước đăng anh
 - Thông tin liên hệ (Mục to)
-+ Chung chủ hay không (Radio box) 
+- Chung chủ hay không (Radio box):  
 
 
 

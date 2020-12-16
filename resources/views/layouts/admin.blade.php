@@ -9,6 +9,11 @@
             <div class="col-md-12">
                 Trang chủ
             </div>
+          <div>
+            @yield('content')
+          </div>
         </div>
+
     </div>
+
 @endsection

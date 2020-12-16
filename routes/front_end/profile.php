@@ -34,3 +34,15 @@ Route::prefix('quan-ly')->group(function () {
         'uses' => 'ProfileController@getAccNew',
     ]);
 });
+
+
+Route::prefix('admin')->group(function () {
+    Route::prefix('posts')->group(function () {
+       Route::get('/all-post', 'PostController@adminShowAllPost');
+       Route::get('/pending-post', 'PostController@adminShowPendingPost');
+       Route::get('/denied-post', 'PostController@adminShowDeniedPost');
+       Route::get('/violate-post', 'PostController@adminShowViolatePost');
+    });
+
+});
+Route::get('/post/{id}', 'PostController@getPost');

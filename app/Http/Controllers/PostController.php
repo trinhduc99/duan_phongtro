@@ -41,6 +41,31 @@ class PostController extends Controller
         ],200);
     }
 
+    public function adminShowAllPost () {
+        $posts = Post::get();
+        return view('admin.posts.all-post', ['posts' => $posts]);
+    }
+
+    public function getPost ($id) {
+        $post = Post::find($id);
+        return response()->json(['success' => true, $post], 200);
+    }
+
+    public function adminShowPendingPost () {
+        $posts = Post::where('status', Post::$POST_STATUS['pending'])->get();
+        return view('admin.posts.pending-post', ['posts' => $posts]);
+    }
+
+    public function adminShowDeniedPost () {
+        $posts = Post::where('status', Post::$POST_STATUS['denied'])->get();
+        return view('admin.posts.denied-post', ['posts' => $posts]);
+    }
+
+    public function adminShowViolatePost () {
+        $posts = Post::where('status', Post::$POST_STATUS['violate'])->get();
+        return view('admin.posts.violate-post', ['posts' => $posts]);
+    }
+
     /*
      *  Search post
     */
