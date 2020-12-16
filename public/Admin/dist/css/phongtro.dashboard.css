@@ -73,7 +73,14 @@ input#new_start_day {
 select#acc_electric_calculate_method ,select#acc_water_calculate_method {
     background-color: #ECF0F5 !important;
 }
-
+.color_red {
+    color :orangered;
+}
+.error {
+    color: red;
+    font-weight: normal;
+    font-family: verdana, Helvetica, serif;
+}
 section.col-lg-4.right_fixed {
     position: fixed;
     right: 0;
