@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Ho_Chi_Minh',
 
     /*
     |--------------------------------------------------------------------------
@@ -161,8 +161,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Laravel\Passport\PassportServiceProvider::class,
-        Spatie\Permission\PermissionServiceProvider::class,
+//        Laravel\Passport\PassportServiceProvider::class,
+//        Spatie\Permission\PermissionServiceProvider::class,
         /*
          * Package Service Providers...
          */
